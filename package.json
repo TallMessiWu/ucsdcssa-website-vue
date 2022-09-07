@@ -1,0 +1,18 @@
+{
+  "name": "ucsdcssa-website-vue",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^3.1.0",
+    "element-plus": "^2.2.16",
+    "vue": "^3.0.4"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "less": "^4.1.3",
+    "vite": "^3.1.0"
+  }
+}
