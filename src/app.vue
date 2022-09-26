@@ -4,6 +4,7 @@
 
 <script setup>
 import {isMobile} from "./utils/isMobile"
+import {useRouter} from "vue-router";
 
 const router = useRouter()
 if (isMobile()) {
@@ -17,4 +18,3 @@ export default {
   name: 'App'
 }
 </script>
-
