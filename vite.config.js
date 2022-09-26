@@ -1,6 +1,7 @@
 import vue from "@vitejs/plugin-vue"
+import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite';
-import {VantResolver} from 'unplugin-vue-components/resolvers';
+import {ElementPlusResolver, VantResolver} from 'unplugin-vue-components/resolvers';
 import {defineConfig} from "vite";
 
 export default defineConfig({
@@ -11,11 +12,16 @@ export default defineConfig({
         port: 666
     },
     plugins: [
+        // 配置响应式语法糖
         vue({
             reactivityTransform: true
         }),
+        // 配置按需引入组件和样式
+        AutoImport({
+            resolvers: [ElementPlusResolver()],
+        }),
         Components({
-            resolvers: [VantResolver()],
+            resolvers: [ElementPlusResolver(), VantResolver()],
         }),
     ]
 })
