@@ -8,7 +8,7 @@ import {useRouter} from "vue-router";
 const router = useRouter()
 
 function getInstruction() {
-  router.push("card-instructions")
+  router.push("/card-instructions")
 }
 </script>
 <script>

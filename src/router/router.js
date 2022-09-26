@@ -30,12 +30,12 @@ const routes = [
                 component: MobileCard,
                 name: "Card",
             },
-            {
-                path: "card-instructions",
-                component: MobileCardInstructions,
-                name: "CardInstructions",
-            },
         ]
+    },
+    {
+        path: "/card-instructions",
+        component: MobileCardInstructions,
+        name: "CardInstructions",
     },
 ]
 
