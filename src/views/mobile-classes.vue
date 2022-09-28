@@ -26,7 +26,7 @@
 <script setup>
 
 const courses = []
-Object.keys(import.meta.glob("../assets/classes-qr-codes/*")).sort().forEach(x => {
+Object.keys(import.meta.glob("/public/classes-qr-codes/*")).sort().forEach(x => {
   // 后面是vite的静态资源解析 https://cn.vitejs.dev/guide/assets.html#new-url-url-import-meta-url
   courses.push([x.match(/[^\/.]+/ig)[2], new URL(x, import.meta.url).href])
 })
