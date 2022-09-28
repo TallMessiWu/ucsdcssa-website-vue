@@ -1,10 +1,13 @@
 <template>
   <van-nav-bar
       title="标题"
-      left-text="返回"
       left-arrow
       @click-left="onClickLeft"
-  />
+  >
+    <template #left>
+      <van-button icon="arrow-left" round color="#a8241c" size="small"/>
+    </template>
+  </van-nav-bar>
   <div>card instructions</div>
 </template>
 
