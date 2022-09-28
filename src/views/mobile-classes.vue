@@ -10,7 +10,7 @@
         <van-collapse v-for="course in result" v-model="activeNames"
                       accordion>
           <van-collapse-item :title="course" :name="course">
-            <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load :width="452">
+            <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load width="100%">
               <template #loading>
                 <div class="loading-container">
                   <van-loading type="spinner" size="60"/>
@@ -29,7 +29,7 @@
         <div class="group-container">
           <van-collapse v-for="course in courses" v-model="activeNames" accordion>
             <van-collapse-item :title="course" :name="course">
-              <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load :width="452">
+              <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load width="100%">
                 <template #loading>
                   <div class="loading-container">
                     <van-loading type="spinner" size="60"/>
