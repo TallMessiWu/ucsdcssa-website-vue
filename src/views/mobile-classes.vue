@@ -1,18 +1,40 @@
 <template>
   <div class="container">
 
-    <van-search v-model="search" shape="round" placeholder="请输入搜索关键词" background="#f2f2f2"/>
-    <van-index-bar :index-list="Object.keys(coursesGrouped)">
+    <!--搜索栏-->
+    <van-search v-model.trim="search" shape="round" placeholder="请输入要搜索的课名" @input="onInput"
+                background="#f2f2f2"/>
+    <!--搜索页面-->
+    <template v-if="search">
+      <div class="search-result-container">
+        <van-collapse v-for="course in result" v-model="activeNames"
+                      accordion>
+          <van-collapse-item :title="course" :name="course">
+            <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load :width="452">
+              <template #loading>
+                <div class="loading-container">
+                  <van-loading type="spinner" size="60"/>
+                </div>
+              </template>
+            </van-image>
+          </van-collapse-item>
+        </van-collapse>
+      </div>
+    </template>
+
+    <!--主页面-->
+    <van-index-bar v-show="!search" :index-list="Object.keys(coursesGrouped)" :sticky-offset-top="70">
       <template v-for="(courses, key) in coursesGrouped">
         <van-index-anchor :index="key"/>
         <div class="group-container">
           <van-collapse v-for="course in courses" v-model="activeNames" accordion>
             <van-collapse-item :title="course" :name="course">
-              <van-image :src="`/classes-qr-codes/${course}.jpg`" alt="" lazy-load>
+              <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load :width="452">
                 <template #loading>
-                  <van-loading type="spinner" size="20"/>
+                  <div class="loading-container">
+                    <van-loading type="spinner" size="60"/>
+                  </div>
                 </template>
-                <template #error>加载失败</template>
               </van-image>
             </van-collapse-item>
           </van-collapse>
@@ -24,27 +46,28 @@
 </template>
 
 <script setup>
-const coursesGrouped = {
-  "A": ["ANTH 10", "ANTH 103", "ANTH 2", "ANTH 21", "AWP 3", "AWP 4A", "AWP 4B"],
-  "B": ["BIBC 120", "BICD 100", "BIEB 146", "BILD 1", "BILD 2", "BILD 3", "BILD 4", "BIMM 100", "BIPN 100", "BIPN 140", "BIPN 146"],
-  "C": ["CAT 125", "CAT 125R", "CAT 3", "CHEM 100A", "CHEM 11", "CHEM 114C", "CHEM 118", "CHEM 40A", "CHEM 40B", "CHEM 43A", "CHEM 6A", "CHEM 6B", "CHEM 6C", "CHEM 7L", "CHEM 7LM", "COGS 1", "COGS 100", "COGS 101A", "COGS 101C", "COGS 12", "COGS 14A", "COGS 14B", "COGS 17", "COGS 18", "COGS 其他", "COMM 10", "COMM 100C", "COMM 190", "CSE 100", "CSE 105", "CSE 11", "CSE 12", "CSE 140", "CSE 140L", "CSE 15L", "CSE 20", "CSE 21", "CSE 30", "CSE 8A", "CSE 8B", "CSE 其他"],
-  "D": ["DOC 3", "DSC 10", "DSC 190", "DSC 20", "DSC 30", "DSC 40A", "DSC 40B", "DSC 80", "DSGN 1", "DSGN 100"],
-  "E": ["ECE 109", "ECE 17", "ECE 35", "ECE 45", "ECE 65", "ECON 1", "ECON 100A", "ECON 100B", "ECON 100C", "ECON 102", "ECON 105", "ECON 110A", "ECON 110B", "ECON 111", "ECON 120A", "ECON 120B", "ECON 120C", "ECON 129", "ECON 138", "ECON 152", "ECON 171", "ECON 173B", "ECON 2", "ECON 3", "ECON 5", "ECON 其他", "ENG 100D", "ESYS 10", "ETHN 3"],
-  "G": ["GLBH 181"],
-  "H": ["HIEA 153", "HIEU 114", "HILD 12", "HUM 2", "HUM 5"],
-  "I": ["INTL 101", "INTL 102", "INTL 190"],
-  "J": ["JAPN 10C"],
-  "L": ["LATI 10", "LIFR 1A", "LIGN 8", "LTCS 130", "LTEA 110A", "LTEA 120A", "LTEN 148", "LTKO 1C"],
-  "M": ["MAE 3", "MAE 8", "MATH 102", "MATH 109", "MATH 10A", "MATH 10B", "MATH 10C", "MATH 11", "MATH 140B", "MATH 142B", "MATH 154", "MATH 170A", "MATH 170B", "MATH 18", "MATH 180A", "MATH 180B", "MATH 181A", "MATH 181B", "MATH 183", "MATH 184", "MATH 20A", "MATH 20B", "MATH 20C", "MATH 20D", "MATH 20E", "MATH 其他", "MCWP 125", "MCWP 40", "MCWP 50", "MGT 100", "MGT 103", "MGT 112", "MGT 12", "MGT 153", "MGT 16", "MGT 164", "MGT 166", "MGT 171", "MGT 173", "MGT 175", "MGT 18", "MGT 181", "MGT 187", "MGT 45", "MGT 5", "MGT 52", "MGT 71", "MGT 其他", "MMW 13", "MUS 114", "MUS 13", "MUS 15", "MUS 17", "MUS 172", "MUS 4", "MUS 5", "MUS 95G", "MUS 其他"],
-  "P": ["PHIL 10", "PHIL 15", "PHYS 1A", "PHYS 1AL", "PHYS 1C", "PHYS 1CL", "PHYS 2B", "PHYS 2C", "PHYS 4B", "POLI 102C", "POLI 12D", "POLI 27", "POLI 28", "PSYC 1", "PSYC 100", "PSYC 101", "PSYC 104", "PSYC 105", "PSYC 106", "PSYC 3", "PSYC 60", "PSYC 7", "PSYC 70", "PSYC 其他"],
-  "S": ["SIO 16", "SIO 87", "SOCI 60", "SOCI 其他", "SYN 1"],
-  "T": ["TDAC 1", "TDGE 1", "TDGE 11", "TDGE 87", "TDMV 11", "TDMV 2"],
-  "V": ["VIS 10", "VIS 102", "VIS 106B", "VIS 128A", "VIS 159", "VIS 164", "VIS 174", "VIS 175", "VIS 179", "VIS 21B", "VIS 3", "VIS 41", "VIS 70N", "VIS 84"],
-  "W": ["WCWP 100", "WCWP 10A", "WCWP 10B"]
-}
+import coursesGrouped from "../assets/courses_grouped.json"
 
 const search = $ref('')
-const activeNames = $ref('')
+let activeNames = $ref('')
+
+//搜索功能
+// 所有课名小写并去除空格
+const courses = Object.values(coursesGrouped).reduce((prev, cur) => prev.concat(cur), [])
+let result = $ref([])
+
+function onInput() {
+  activeNames = ''
+  // 用户输入小写并去除空格
+  const searchFormatted = search.toLowerCase().replaceAll(" ", "")
+  // 模糊查询
+  result = courses.reduce((prev, cur) => {
+    if (cur.toLowerCase().replaceAll(" ", "").indexOf(searchFormatted) !== -1) {
+      return prev.concat([cur])
+    }
+    return prev
+  }, [])
+}
 
 </script>
 <script>
@@ -58,6 +81,20 @@ export default {
     padding: 25px;
   }
 
+  .search-result-container {
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .loading-container {
+    width: 293px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .van-search {
     padding: 0;
   }
@@ -65,9 +102,5 @@ export default {
   .group-container {
     border-radius: 15px;
     overflow: hidden;
-  }
-
-  :deep(.van-collapse-item__title .van-icon-arrow:before) {
-    margin-right: 20px;
   }
 </style>

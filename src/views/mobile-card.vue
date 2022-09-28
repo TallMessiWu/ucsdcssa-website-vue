@@ -1,5 +1,6 @@
 <template>
-  <button @click="getInstruction">get instruction</button>
+  <!--<button @click="getInstruction">get instruction</button>-->
+  <div>开发中</div>
 </template>
 
 <script setup>

@@ -1,7 +1,7 @@
 <template>
-  <van-nav-bar :title="title"/>
+  <van-nav-bar :title="title" fixed placeholder/>
   <router-view/>
-  <van-tabbar route active-color="#C22A1E">
+  <van-tabbar route active-color="#C22A1E" placeholder>
     <van-tabbar-item replace to="/mobile/home" icon="home-o">主页</van-tabbar-item>
     <van-tabbar-item replace to="/mobile/classes" icon="friends-o">课友群</van-tabbar-item>
     <van-tabbar-item replace to="/mobile/card" icon="credit-pay">CSSA卡</van-tabbar-item>
@@ -42,6 +42,7 @@ export default {
   .van-nav-bar {
     background-color: #C22A1E;
     color: white;
+    z-index: 100;
   }
 
   .van-nav-bar__title {
