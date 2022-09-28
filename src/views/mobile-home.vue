@@ -1,17 +1,23 @@
 <template>
-  <van-nav-bar :title="title" fixed placeholder/>
-  <router-view/>
-  <van-tabbar route active-color="#C22A1E" placeholder>
-    <van-tabbar-item replace to="/mobile/home" icon="home-o">主页</van-tabbar-item>
-    <van-tabbar-item replace to="/mobile/classes" icon="friends-o">课友群</van-tabbar-item>
-    <van-tabbar-item replace to="/mobile/card" icon="credit-pay">CSSA卡</van-tabbar-item>
-  </van-tabbar>
-
+  <van-config-provider :theme-vars="themeVars">
+    <van-nav-bar :title="title" fixed placeholder/>
+    <router-view/>
+    <van-tabbar route active-color="#C22A1E" placeholder>
+      <van-tabbar-item replace to="/mobile/home" icon="home-o">主页</van-tabbar-item>
+      <van-tabbar-item replace to="/mobile/classes" icon="friends-o">课友群</van-tabbar-item>
+      <van-tabbar-item replace to="/mobile/card" icon="credit-pay">CSSA卡</van-tabbar-item>
+    </van-tabbar>
+  </van-config-provider>
 
 </template>
 
 <script setup>
 import {onBeforeRouteUpdate, useRoute} from "vue-router";
+
+const themeVars = {
+  navBarBackgroundColor: "#C22A1E",
+  navBarTextColor: "white"
+}
 
 // 设置导航栏标题
 const route = useRoute()
@@ -40,8 +46,6 @@ export default {
 
 <style lang="less">
   .van-nav-bar {
-    background-color: #C22A1E;
-    color: white;
     z-index: 100;
   }
 
