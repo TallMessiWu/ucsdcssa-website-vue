@@ -1,4 +1,4 @@
-# UCSD CSSA Official Website
+# UCSD CSSA官网
 
 [官网入口](https://www.ucsdcssa.com)
 
