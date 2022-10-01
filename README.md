@@ -1,6 +1,7 @@
 # UCSD CSSA官网
 
-[官网入口](https://www.ucsdcssa.com)
+[官网入口](https://www.ucsdcssa.com)  
+[后端GitHub仓库](https://github.com/TallMessiWu/ucsdcssa-website-backend)
 
 ## 项目配置
 
