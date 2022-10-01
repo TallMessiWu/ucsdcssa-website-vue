@@ -23,8 +23,8 @@ const themeVars = {
 const route = useRoute()
 const titles = {
   "MobileHome": "主页",
-  "Classes": "课友群",
-  "Card": "CSSA卡"
+  "MobileClasses": "课友群",
+  "MobileCard": "CSSA卡"
 }
 let title = $ref(titles[route.name])
 // 监听路由变化

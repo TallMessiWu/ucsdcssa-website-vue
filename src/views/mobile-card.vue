@@ -1,5 +1,5 @@
 <template>
-  <!--<button @click="getInstruction">get instruction</button>-->
+  <button @click="getInstruction">get instruction</button>
   <div>开发中</div>
 </template>
 
@@ -9,7 +9,7 @@ import {useRouter} from "vue-router";
 const router = useRouter()
 
 function getInstruction() {
-  router.push("/card-instructions")
+  router.push({name: "MobileCardInstructions"})
 }
 </script>
 <script>
