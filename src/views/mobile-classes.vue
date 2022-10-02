@@ -130,7 +130,6 @@ export default {
 
 <style scoped lang="less">
   .container {
-    height: 100vh;
     padding: 25px;
   }
 
