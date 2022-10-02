@@ -145,7 +145,7 @@ async function sendCaptcha() {
   // 发送邮件
   captchaState.getCodeDisabled = true
   const formData = new FormData()
-  formData.append("email", email)
+  formData.append("email", email.toLowerCase())
   formData.append("purpose", "重置密码")
   try {
     await axios.put("/captcha", formData)

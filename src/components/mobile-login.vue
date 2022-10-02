@@ -51,7 +51,7 @@ const router = useRouter()
 const onSubmit = async (values) => {
 
   const formData = new FormData();
-  formData.append("email", values.email);
+  formData.append("email", values.email.toLowerCase());
   formData.append("password", values.password);
 
   try {
