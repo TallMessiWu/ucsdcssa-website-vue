@@ -77,9 +77,10 @@ const loginRequiredPages = [
 
 router.beforeEach((to, from, next) => {
 
-    const token = sessionStorage.getItem("userInfo")
+    const token = localStorage.getItem("token")
+    const id = localStorage.getItem("id")
 
-    if (loginRequiredPages.includes(to.path) && !token) {
+    if (loginRequiredPages.includes(to.path) && !token && !id) {
         next({path: "/login-register", query: {destination: to.path}})
     } else {
         next()

@@ -1,36 +1,18 @@
 <template>
-  <div class="container">
-    <van-config-provider :theme-vars="themeVars">
+  <van-pull-refresh v-model="loading" @refresh="onRefresh">
+    <div class="container">
+      <van-config-provider :theme-vars="themeVars">
 
-      <!--搜索栏-->
-      <van-search v-model.trim="search" shape="round" placeholder="请输入要搜索的课名" @input="onInput"
-                  background="rgba(242, 242, 242, 0)"/>
-      <!--搜索页面-->
-      <template v-if="search">
-        <div class="search-result-container">
-          <van-collapse v-for="course in result" v-model="activeNames"
-                        accordion>
-            <van-collapse-item :title="course" :name="course">
-              <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load width="100%">
-                <template #loading>
-                  <div class="loading-container">
-                    <van-loading type="spinner" size="60"/>
-                  </div>
-                </template>
-              </van-image>
-            </van-collapse-item>
-          </van-collapse>
-        </div>
-      </template>
-
-      <!--主页面-->
-      <van-index-bar v-show="!search" :index-list="Object.keys(coursesGrouped)">
-        <template v-for="(courses, key) in coursesGrouped">
-          <van-index-anchor :index="key"/>
-          <div class="group-container">
-            <van-collapse v-for="course in courses" v-model="activeNames" accordion>
+        <!--搜索栏-->
+        <van-search v-model.trim="search" shape="round" placeholder="请输入要搜索的课名" @input="onInput"
+                    background="rgba(242, 242, 242, 0)"/>
+        <!--搜索页面-->
+        <template v-if="search">
+          <div class="search-result-container">
+            <van-collapse v-for="course in result" v-model="activeNames"
+                          accordion>
               <van-collapse-item :title="course" :name="course">
-                <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load width="100%">
+                <van-image :src="`/images/classes-qr-codes/${course}.jpg`" alt="" lazy-load width="100%" ref="img">
                   <template #loading>
                     <div class="loading-container">
                       <van-loading type="spinner" size="60"/>
@@ -41,24 +23,86 @@
             </van-collapse>
           </div>
         </template>
-      </van-index-bar>
-    </van-config-provider>
-  </div>
+
+        <!--主页面-->
+        <van-index-bar v-show="!search" :index-list="Object.keys(coursesGrouped)">
+          <template v-for="(courses, key) in coursesGrouped">
+            <van-index-anchor :index="key"/>
+            <div class="group-container">
+              <van-collapse v-for="course in courses" v-model="activeNames" accordion>
+                <van-collapse-item :title="course" :name="course">
+                  <van-image :src="`http://localhost:667/courses/${course}`" alt="" lazy-load width="100%" ref="img">
+                    <template #loading>
+                      <div class="loading-container">
+                        <van-loading type="spinner" size="60"/>
+                      </div>
+                    </template>
+                  </van-image>
+                </van-collapse-item>
+              </van-collapse>
+            </div>
+          </template>
+        </van-index-bar>
+      </van-config-provider>
+    </div>
+  </van-pull-refresh>
 
 </template>
 
 <script setup>
-import coursesGrouped from "../assets/courses_grouped.json"
+import {inject} from "vue";
+import {Toast} from "vant";
+import 'vant/es/toast/style';
+import {useRouter} from "vue-router";
+
+const axios = inject("axios")
+const router = useRouter()
+
+// 获取课程列表
+let coursesGrouped = $ref({})
+let courses = []
+
+function getCoursesGrouped() {
+  axios.get(
+      "/courses", {
+        headers: {
+          token: localStorage.getItem("token"),
+          id: localStorage.getItem("id")
+        }
+      })
+      .then(res => {
+        coursesGrouped = res.data
+        courses = Object.values(coursesGrouped).reduce((prev, cur) => prev.concat(cur), [])
+        loading = false
+      })
+      .catch((err) => {
+        Toast.fail(err.response.data);
+        localStorage.removeItem("token")
+        localStorage.removeItem("id")
+        loading = false
+        router.replace({name: "MobileLoginRegister", query: {destination: "/mobile/classes"}})
+      })
+}
+
+getCoursesGrouped()
+
+// 刷新功能
+let loading = $ref(false);
+
+function onRefresh() {
+  coursesGrouped = {}
+  courses = []
+  getCoursesGrouped()
+}
 
 const themeVars = {
   searchContentBackgroundColor: "white"
 }
 
+//搜索功能
 const search = $ref('')
 let activeNames = $ref('')
 
-//搜索功能
-const courses = Object.values(coursesGrouped).reduce((prev, cur) => prev.concat(cur), [])
 let result = $ref([])
 
 function onInput() {
@@ -83,6 +127,7 @@ export default {
 
 <style scoped lang="less">
   .container {
+    height: 100vh;
     padding: 25px;
   }
 

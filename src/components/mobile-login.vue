@@ -54,8 +54,9 @@ const onSubmit = async (values) => {
   formData.append("password", values.password);
 
   try {
-    const {data: userInfo} = await axios.post("/login", formData)
-    sessionStorage.setItem("userInfo", JSON.stringify(userInfo))
+    const {data: {token, id}} = await axios.post("/login", formData)
+    localStorage.setItem("token", token)
+    localStorage.setItem("id", id)
     router.replace(props.destination)
   } catch (err) {
     const {response: {data}} = err
