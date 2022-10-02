@@ -57,6 +57,7 @@ const onSubmit = async (values) => {
     const {data: {token, id}} = await axios.post("/login", formData)
     localStorage.setItem("token", token)
     localStorage.setItem("id", id)
+    Toast.success("登录成功");
     router.replace(props.destination)
   } catch (err) {
     const {response: {data}} = err
