@@ -148,6 +148,7 @@ async function sendCaptcha() {
     captchaState.getCodeDisabled = false
     const {response: {data}} = err
     Toast.fail(data);
+    return
   }
 
   // 设置倒计时
