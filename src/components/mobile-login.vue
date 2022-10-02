@@ -17,6 +17,7 @@
           :rules="[{ required: true,message: '请填写密码' }]"
       />
     </van-cell-group>
+    <router-link :to="{name: 'MobileResetPassword'}" class="reset-password">忘记密码</router-link>
     <div class="button">
       <van-button round block type="primary" native-type="submit" color="#C22A1E">
         登录
@@ -75,7 +76,14 @@ export default {
 </script>
 
 <style scoped lang="less">
+  .reset-password {
+    position: absolute;
+    margin-top: 10px;
+    right: 30px;
+    text-decoration: underline;
+  }
+
   .button {
-    margin: 25px 16px 0 16px;
+    margin: 40px 16px 0 16px;
   }
 </style>

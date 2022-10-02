@@ -1,79 +1,87 @@
 <template>
-  <van-form @submit="onSubmit">
-    <van-cell-group inset>
-      <van-field
-          v-model.trim="email"
-          name="email"
-          label="邮箱"
-          placeholder="邮箱"
-          :rules="[{ required: true, message: '请填写UCSD邮箱', validator: emailValidator}]"
-      />
-      <van-field
-          v-model.trim="username"
-          name="username"
-          label="用户名"
-          placeholder="用户名"
-          :rules="[{ required: true, message: '请填写用户名'}]"
-      />
-      <van-field
-          v-model.trim="password"
-          type="password"
-          name="password"
-          label="密码"
-          placeholder="密码"
-          :rules="[{
+  <van-config-provider :theme-vars="themeVars">
+    <van-nav-bar
+        title="忘记密码"
+        left-arrow
+        @click-left="onClickLeft"
+    >
+      <template #left>
+        <van-button icon="arrow-left" round color="#a8241c" size="small"/>
+      </template>
+    </van-nav-bar>
+
+    <div class="form-container">
+      <van-image :src="logo" width="36vw" class="logo"/>
+      <van-form @submit="onSubmit">
+        <van-cell-group inset>
+          <van-field
+              v-model.trim="email"
+              name="email"
+              label="邮箱"
+              placeholder="邮箱"
+              :rules="[{ required: true, message: '请填写UCSD邮箱', validator: emailValidator}]"
+          />
+
+          <van-field
+              v-model.trim="password"
+              type="password"
+              name="password"
+              label="新密码"
+              placeholder="新密码"
+              :rules="[{
             required: true,
             message: '密码应为字母，数字，特殊符号(~!@#$%^&*()_.)，两种及以上组合，8-16位字符串，如：xyl37@baa',
             validator: passwordValidator
           }]"
-      />
-      <van-field
-          v-model.trim="password2"
-          type="password"
-          name="password2"
-          label="重复密码"
-          placeholder="重复密码"
-          :rules="[{ required: true, message: '请重复填写相同的密码', validator: password2Validator }]"
-      />
-      <van-field
-          v-model="captcha"
-          center
-          clearable
-          name="captcha"
-          label="邮箱验证码"
-          placeholder="邮箱验证码"
-          :rules="[{ required: true, message: '请填写6位数字邮箱验证码', validator: captchaValidator }]"
-      >
-        <template #button>
-          <van-button size="small" type="primary" color="#C22A1E" @click="sendCaptcha"
-                      :disabled="captchaState.getCodeDisabled">
-            <span v-if="!captchaState.countDownIng">发送验证码</span>
-            <span v-else>{{ captchaState.countDownTime }}秒后重新发送</span>
+          />
+          <van-field
+              v-model.trim="password2"
+              type="password"
+              name="password2"
+              label="重复密码"
+              placeholder="重复密码"
+              :rules="[{ required: true, message: '请重复填写相同的密码', validator: password2Validator }]"
+          />
+          <van-field
+              v-model="captcha"
+              center
+              clearable
+              name="captcha"
+              label="邮箱验证码"
+              placeholder="邮箱验证码"
+              :rules="[{ required: true, message: '请填写6位数字邮箱验证码', validator: captchaValidator }]"
+          >
+            <template #button>
+              <van-button size="small" type="primary" color="#C22A1E" @click="sendCaptcha"
+                          :disabled="captchaState.getCodeDisabled">
+                <span v-if="!captchaState.countDownIng">发送验证码</span>
+                <span v-else>{{ captchaState.countDownTime }}秒后重新发送</span>
+              </van-button>
+            </template>
+          </van-field>
+        </van-cell-group>
+        <div class="button">
+          <van-button round block type="primary" native-type="submit" color="#C22A1E">
+            提交
           </van-button>
-        </template>
-      </van-field>
-    </van-cell-group>
-    <div class="button">
-      <van-button round block type="primary" native-type="submit" color="#C22A1E">
-        注册
-      </van-button>
+        </div>
+      </van-form>
     </div>
-  </van-form>
+
+  </van-config-provider>
 </template>
 
 <script setup>
+import logo from "../assets/logo.png"
 import {inject} from "vue";
-import {useRouter} from "vue-router";
 import {Toast} from "vant";
-import 'vant/es/toast/style';
 
-const props = defineProps(
-    {
-      destination: String
-    }
-)
+const onClickLeft = () => history.back();
 
-const username = $ref('');
+const themeVars = {
+  navBarBackgroundColor: "#C22A1E",
+  navBarTextColor: "white"
+}
 
 const email = $ref('');
 const emailValidator = (val) => /^([A-Za-z0-9_\-\.])+\@ucsd\.edu$/.test(val.toLowerCase())
@@ -84,7 +92,6 @@ const passwordValidator = (val) => /(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*()_.]+)$)^[\w~!
 const password2 = $ref('');
 const password2Validator = (val) => password === val
 
-const router = useRouter()
 const axios = inject("axios")
 // 验证码功能
 const captcha = $ref('')
@@ -139,7 +146,7 @@ async function sendCaptcha() {
   captchaState.getCodeDisabled = true
   const formData = new FormData()
   formData.append("email", email)
-  formData.append("purpose", "注册")
+  formData.append("purpose", "重置密码")
   try {
     await axios.put("/captcha", formData)
   } catch (err) {
@@ -167,33 +174,35 @@ async function sendCaptcha() {
 
 const onSubmit = async (values) => {
   const formData = new FormData();
-  formData.append("username", values.username);
   formData.append("email", values.email);
   formData.append("password", values.password);
   formData.append("captcha", values.captcha);
 
   try {
-    const {data: {token, id}} = await axios.post("/register", formData)
-    localStorage.setItem("token", token)
-    localStorage.setItem("id", id)
-    Toast.success("注册成功")
-    router.replace(props.destination)
+    await axios.put("/reset-password", formData)
+    Toast.success("修改成功")
+    history.back()
   } catch (err) {
     const {response: {data}} = err
     Toast.fail(data);
   }
-}
-
+};
 
 </script>
 
 <script>
 export default {
-  name: "MobileRegister"
+  name: "MobileResetPassword"
 }
 </script>
 
 <style scoped lang="less">
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .button {
     margin: 25px 16px 0 16px;
   }

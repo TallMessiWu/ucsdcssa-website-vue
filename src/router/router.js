@@ -7,8 +7,7 @@ import MobileDiscovery from "../views/mobile-discovery.vue";
 import MobileCard from "../views/mobile-card.vue";
 import MobileCardInstructions from "../views/mobile-card-instructions.vue";
 import MobileLoginRegister from "../views/mobile-login-register.vue";
-import MobileLogin from "../components/mobile-login.vue";
-import MobileRegister from "../components/mobile-register.vue";
+import MobileResetPassword from "../views/mobile-reset-password.vue";
 
 const routes = [
     {
@@ -50,19 +49,12 @@ const routes = [
         path: "/mobile-login-register",
         component: MobileLoginRegister,
         name: "MobileLoginRegister",
-        children: [
-            {
-                path: "login",
-                component: MobileLogin,
-                name: "MobileLogin",
-            },
-            {
-                path: "register",
-                component: MobileRegister,
-                name: "MobileRegister"
-            }
-        ]
     },
+    {
+        path: "/mobile-reset-password",
+        component: MobileResetPassword,
+        name: "MobileResetPassword",
+    }
 ]
 
 const router = createRouter({
