@@ -1,6 +1,7 @@
 <template>
-  <button @click="getInstruction">get instruction</button>
-  <div>开发中</div>
+  <div class="container">
+    <h1>开发中</h1>
+  </div>
 </template>
 
 <script setup>
@@ -19,5 +20,11 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+  .container {
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
