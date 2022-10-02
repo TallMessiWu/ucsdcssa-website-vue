@@ -20,6 +20,9 @@
                     </div>
                   </template>
                 </van-image>
+                <van-button round type="danger" plain class="button" @click="assistantQRCode">
+                  如果二维码失效，请点此联系小助手
+                </van-button>
               </van-collapse-item>
             </van-collapse>
           </div>
@@ -40,6 +43,9 @@
                       </div>
                     </template>
                   </van-image>
+                  <van-button round type="danger" plain class="button" @click="assistantQRCode">
+                    如果二维码失效，请点此联系小助手
+                  </van-button>
                 </van-collapse-item>
               </van-collapse>
             </div>
@@ -53,7 +59,8 @@
 
 <script setup>
 import {inject} from "vue";
-import {Toast} from "vant";
+import {ImagePreview, Toast} from "vant";
+import 'vant/es/image-preview/style';
 import 'vant/es/toast/style';
 import {useRouter} from "vue-router";
 import {secretes} from "../secretes";
@@ -129,6 +136,16 @@ function onInput() {
   }, [])
 }
 
+// 展示小助手页面
+function assistantQRCode() {
+  // 分摊小助手工作
+  if (Math.random() < 0.5) {
+    ImagePreview([`${secretes.backendAddress}/assistants/1`, `${secretes.backendAddress}/assistants/2`]);
+  } else {
+    ImagePreview([`${secretes.backendAddress}/assistants/2`, `${secretes.backendAddress}/assistants/1`]);
+  }
+}
+
 </script>
 <script>
 export default {
@@ -167,4 +184,10 @@ export default {
     border-radius: 15px;
     overflow: hidden;
   }
+
+  .button {
+    width: 90%;
+    margin: 5px 14px;
+  }
+
 </style>
