@@ -66,6 +66,12 @@ let coursesGrouped = $ref({})
 let courses = []
 
 function getCoursesGrouped() {
+  Toast.loading({
+    duration: 0,
+    message: '加载中...',
+    forbidClick: true,
+    loadingType: 'spinner'
+  })
   axios.get(
       "/courses", {
         headers: {
@@ -77,8 +83,10 @@ function getCoursesGrouped() {
         coursesGrouped = res.data
         courses = Object.values(coursesGrouped).reduce((prev, cur) => prev.concat(cur), [])
         loading = false
+        Toast.clear()
       })
       .catch((err) => {
+        Toast.clear()
         Toast.fail(err.response.data);
         localStorage.removeItem("token")
         localStorage.removeItem("id")
