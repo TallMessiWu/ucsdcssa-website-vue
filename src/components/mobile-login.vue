@@ -49,7 +49,12 @@ const password = $ref('');
 
 const router = useRouter()
 const onSubmit = async (values) => {
-
+  Toast.loading({
+    message: '加载中...',
+    forbidClick: true,
+    loadingType: 'spinner',
+    duration: 0
+  });
   const formData = new FormData();
   formData.append("email", values.email.toLowerCase());
   formData.append("password", values.password);
@@ -58,10 +63,15 @@ const onSubmit = async (values) => {
     const {data: {token, id}} = await axios.post("/login", formData)
     localStorage.setItem("token", token)
     localStorage.setItem("id", id)
-    Toast.success("登录成功");
+    Toast.clear()
+    Toast.success({
+      message: '登陆成功',
+      forbidClick: true
+    })
     router.replace(props.destination)
   } catch (err) {
     const {response: {data}} = err
+    Toast.clear()
     Toast.fail(data);
   }
 };
