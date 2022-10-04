@@ -143,9 +143,14 @@ async function sendCaptcha() {
   try {
     await axios.put("/captcha", formData)
   } catch (err) {
+    console.log(err)
     captchaState.getCodeDisabled = false
-    const {response: {data}} = err
-    Toast.fail(data);
+    const {response: {data, status}} = err
+    if (status === 403) {
+      Toast(data);
+    } else {
+      Toast.fail(data)
+    }
     return
   }
 
