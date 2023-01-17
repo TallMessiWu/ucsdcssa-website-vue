@@ -21,7 +21,7 @@ const routes = [
     {
         path: '/mobile',
         component: MobileHome,
-        redirect: "mobile/home",
+        redirect: "/mobile/home",
         children: [
             {
                 path: "home",
