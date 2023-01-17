@@ -12,7 +12,7 @@
             <van-collapse v-for="course in result" v-model="activeNames"
                           accordion>
               <van-collapse-item :title="course" :name="course">
-                <van-image :src="`${secretes.backendAddress}/courses/${course}`" alt="" lazy-load width="100%"
+                <van-image :src="`${classified.backendAddress}/courses/${course}`" alt="" lazy-load width="100%"
                            ref="img">
                   <template #loading>
                     <div class="loading-container">
@@ -35,7 +35,7 @@
             <div class="group-container">
               <van-collapse v-for="course in courses" v-model="activeNames" accordion>
                 <van-collapse-item :title="course" :name="course">
-                  <van-image :src="`${secretes.backendAddress}/courses/${course}`" alt="" lazy-load width="100%"
+                  <van-image :src="`${classified.backendAddress}/courses/${course}`" alt="" lazy-load width="100%"
                              ref="img">
                     <template #loading>
                       <div class="loading-container">
@@ -63,7 +63,7 @@ import {ImagePreview, Toast} from "vant";
 import 'vant/es/image-preview/style';
 import 'vant/es/toast/style';
 import {useRouter} from "vue-router";
-import {secretes} from "../secretes";
+import {classified} from "../classified";
 
 const axios = inject("axios")
 const router = useRouter()
@@ -140,9 +140,9 @@ function onInput() {
 function assistantQRCode() {
   // 分摊小助手工作
   if (Math.random() < 0.5) {
-    ImagePreview([`${secretes.backendAddress}/assistants/1`, `${secretes.backendAddress}/assistants/2`]);
+    ImagePreview([`${classified.backendAddress}/assistants/1`, `${classified.backendAddress}/assistants/2`]);
   } else {
-    ImagePreview([`${secretes.backendAddress}/assistants/2`, `${secretes.backendAddress}/assistants/1`]);
+    ImagePreview([`${classified.backendAddress}/assistants/2`, `${classified.backendAddress}/assistants/1`]);
   }
 }
 

@@ -4,11 +4,11 @@ import './index.less'
 import {Lazyload} from "vant"
 import router from "./router/router"
 import axios from "axios"
-import {secretes} from "./secretes"
+import {classified} from "./classified"
 
 const app = createApp(App)
 
-axios.defaults.baseURL = secretes.backendAddress
+axios.defaults.baseURL = classified.backendAddress
 app.provide("axios", axios)
 
 // 使用懒加载
