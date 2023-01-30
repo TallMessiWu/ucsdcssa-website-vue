@@ -1,6 +1,5 @@
 <template>
 
-  <el-image :src="getAssetsFile('../assets/images/logo.png')"></el-image>
   <!--主宣传图-->
   <el-row>
     <home-headline/>
@@ -28,8 +27,7 @@
 import HomeHeadline from "../components/home-headline.vue";
 import HomeIntro from "../components/home-intro.vue";
 import HomeArticles from "../components/home-articles.vue";
-import HomeFaq from "../components/home-faq.vue";
-import {getAssetsFile} from "../utils/getAssetsFile";</script>
+import HomeFaq from "../components/home-faq.vue";</script>
 
 <script>
 export default {
