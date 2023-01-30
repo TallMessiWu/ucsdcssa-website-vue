@@ -1,9 +1,11 @@
 import {createRouter, createWebHashHistory} from "vue-router";
+import Index from "../views/index.vue"
 import Home from "../views/home.vue";
+import Department from "../views/department.vue";
 import LoginRegister from "../views/login-register.vue";
+import MobileIndex from "../views/mobile-index.vue";
 import MobileHome from "../views/mobile-home.vue";
 import MobileClasses from "../views/mobile-classes.vue";
-import MobileDiscovery from "../views/mobile-discovery.vue";
 import MobileCard from "../views/mobile-card.vue";
 import MobileCardInstructions from "../views/mobile-card-instructions.vue";
 import MobileLoginRegister from "../views/mobile-login-register.vue";
@@ -12,7 +14,20 @@ import MobileResetPassword from "../views/mobile-reset-password.vue";
 const routes = [
     {
         path: '/',
-        component: Home
+        component: Index,
+        redirect: "/home",
+        children: [
+            {
+                path: "home",
+                component: Home,
+                name: "Home"
+            },
+            {
+                path: "department",
+                component: Department,
+                name: "Department"
+            }
+        ]
     },
     {
         path: "/login-register",
@@ -20,12 +35,12 @@ const routes = [
     },
     {
         path: '/mobile',
-        component: MobileHome,
+        component: MobileIndex,
         redirect: "/mobile/home",
         children: [
             {
                 path: "home",
-                component: MobileDiscovery,
+                component: MobileHome,
                 name: "MobileHome",
             },
             {
