@@ -28,13 +28,12 @@ import HomeHeadline from "../components/home-headline.vue";
 import HomeIntro from "../components/home-intro.vue";
 import HomeArticles from "../components/home-articles.vue";
 import HomeFaq from "../components/home-faq.vue";
-import {getAssetsFile} from "../utils/getAssetsFile";</script>
+</script>
 
 <script>
 export default {
   name: "Home"
 }
-import { ArrowDown } from '@element-plus/icons-vue'
 </script>
 
 <style scoped>

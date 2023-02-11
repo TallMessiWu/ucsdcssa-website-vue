@@ -1,19 +1,19 @@
 <template>
 
-  <el-dialog v-model="dialogVisible" title="CSSA宣传片" width="80%" >
+  <el-dialog v-model="dialogVisible" title="CSSA宣传片" width="80%">
     <iframe src="//player.bilibili.com/player.html?aid=906602710&bvid=BV19M4y1D7Dt&cid=1001206853&page=1"
-             border="0" framespacing="0" allowfullscreen="true" width="1150" height="620">
+            border="0" framespacing="0" allowfullscreen="true" width="1150" height="620">
     </iframe>
   </el-dialog>
 
   <div class="common-layout">
     <el-container class="container">
-            <div class="aside">
-      <el-aside width="500px">
+      <el-aside width="500px" class="aside">
         <el-row>
           <el-col :span="24">
             <div class="grid-content ep-bg-purple-dark"/>
-            <el-image style="width: 500px; height: 700px" :src="getAssetsFile('全体合照.jpeg')" fit="cover"></el-image>
+            <el-image style="width: 500px; height: 700px" :src="getAssetsFile('全体合照.jpeg')"
+                      fit="cover"></el-image>
             <div class="video">
               <el-button color="#a0342c" bg :icon="CaretRight" size="large" circle @click="dialogVisible=true"/>
             </div>
@@ -21,11 +21,10 @@
           </el-col>
         </el-row>
       </el-aside>
-            </div>
 
 
       <el-container>
-        <el-header height="180px">
+        <el-header height="180px" class="header">
           <h1>什么是CSSA？</h1>
           <h2>非政治、非宗教、非盈利的自治学生学者团体</h2>
 
@@ -95,57 +94,66 @@ export default {
 </script>
 
 <style scoped lang="less">
-h1 {
-  height: 15px;
-  font-size: 18px;
-}
 
-h2 {
-  height: 10px;
-  color: #4e4b42;
-  font-size: 28px;
-}
+  .aside {
+    overflow: hidden;
+  }
 
-p {
-  margin-bottom: 40px;
-  color: #3d3f41;
-}
+  .header {
+    margin-left: 2vw;
+  }
 
-.text {
-  width: 430px;
-  font-size: 14px;
-}
+  h1 {
+    height: 15px;
+    font-size: 18px;
+  }
+
+  h2 {
+    height: 10px;
+    color: #4e4b42;
+    font-size: 28px;
+  }
+
+  p {
+    margin-bottom: 40px;
+    color: #3d3f41;
+  }
+
+  .text {
+    width: 430px;
+    font-size: 14px;
+  }
 
 
-.container {
-  position: relative;
-  left: 25%;
-}
+  .container {
+    position: relative;
+    left: 25%;
+  }
 
-.video {
-  position: relative;
-  top: -50%;
-  left: 100%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
+  .video {
+    position: relative;
+    top: -50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
 
-.list {
-  position: relative;
-  top: 35%;
-  left: 30%;
-}
+  .list {
+    position: relative;
+    top: 35%;
+    left: 30%;
+  }
 
-.el-main {
-  width: 650px;
-}
+  .el-main {
+    width: 650px;
+  }
 
-.el-header {
-  width: 650px;
-}
+  .el-header {
+    width: 650px;
+  }
 
-.common-layout{
-  font-family: sans-serif;
-}
+  .common-layout {
+    font-family: sans-serif;
+  }
 
 </style>

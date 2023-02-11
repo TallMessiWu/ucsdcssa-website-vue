@@ -2,7 +2,7 @@
   <el-container>
     <el-header class="common">
       <el-row justify="space-between" align="middle">
-        <el-col :span="14">
+        <el-col :span="12" :offset="2">
           <el-row align="middle">
             <el-image class="logo" :src="getAssetsFile('logo-with-text.png')" fit="fit"></el-image>
           </el-row>
@@ -134,7 +134,7 @@ export default {
   font-family: sans-serif;
   font-size: 1vw;
   white-space: nowrap;
-  verticle-align: baseline;
+  vertical-align: baseline;
   line-height: 2.5vw;
 }
 
