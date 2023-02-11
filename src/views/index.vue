@@ -23,7 +23,8 @@
 
 <script setup>
 import TheHeader from "../components/the-header.vue";
-import TheFooter from "../components/the-footer.vue";</script>
+import TheFooter from "../components/the-footer.vue";
+</script>
 
 <script>
 export default {
@@ -32,5 +33,17 @@ export default {
 </script>
 
 <style scoped lang="less">
+  :deep(.el-header) {
+    padding: 0;
+  }
+
+  :deep(.el-main) {
+    padding: 0;
+    overflow: visible;
+  }
+
+  :deep(.el-footer) {
+    padding: 0;
+  }
 
 </style>

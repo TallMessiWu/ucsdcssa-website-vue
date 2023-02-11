@@ -27,7 +27,8 @@
 import HomeHeadline from "../components/home-headline.vue";
 import HomeIntro from "../components/home-intro.vue";
 import HomeArticles from "../components/home-articles.vue";
-import HomeFaq from "../components/home-faq.vue";</script>
+import HomeFaq from "../components/home-faq.vue";
+</script>
 
 <script>
 export default {
@@ -36,4 +37,6 @@ export default {
 </script>
 
 <style scoped>
+
+
 </style>
