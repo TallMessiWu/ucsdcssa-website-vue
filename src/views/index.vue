@@ -44,6 +44,7 @@ export default {
 
   :deep(.el-footer) {
     padding: 0;
+    height: 16vw;
   }
 
 </style>

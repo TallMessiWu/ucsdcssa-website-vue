@@ -97,12 +97,12 @@ export default {
 <style scoped lang="less">
   .common-layout {
     width: 85%;
-    padding: 0 22vw 0 22vw;
+    padding: 2vw 22vw 5vw 22vw;
   }
 
   .el-header {
     text-align: center;
-    line-height: 10px;
+    line-height: 0.525vw;
   }
 
   .el-main {
@@ -114,19 +114,19 @@ export default {
   h2 {
     color: #635551;
     font-family: "Poppins", sans-serif;
-    font-size: 32px;
+    font-size: 1.682vw;
     position: relative;
     top: -0.5vw;
   }
 
   h3 {
     position: relative;
-    left: 20px;
+    left: 1.051vw;
     font-family: "Open Sans", sans-serif;
   }
 
   .text {
-    font-size: 16px;
+    font-size: 0.841vw;
     font-family: "Open Sans", sans-serif;
     position: relative;
     left: 2.5vw;

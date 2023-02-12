@@ -54,9 +54,7 @@ export default {
 }
 .common-layout{
   background-color: #313338;
-  padding:0vw;
-  height:20vw;
-
+  padding:0;
 }
 .image2{
   padding-top: 1.6vw;
@@ -125,6 +123,7 @@ export default {
 }
 .first_container{
   height:7vw;
+  margin-top: 1vw;
 }
 .circle_icon:hover{
   margin-top:0.5vw;
