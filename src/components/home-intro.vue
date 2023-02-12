@@ -7,8 +7,8 @@
   </el-dialog>
 
   <el-container class="container">
-    <el-aside class="aside">
-      <el-row>
+    <el-aside class="aside" width="26.174vw">
+      <el-row justify="center">
         <el-col :span="24">
           <el-image style="width: 26.274vw; height: 36.784vw" :src="getAssetsFile('全体合照.jpeg')"
                     fit="cover"></el-image>
@@ -28,6 +28,7 @@
             <h2>非政治、非宗教、非盈利的自治学生学者团体</h2>
           </el-col>
         </el-row>
+
         <el-row>
           <el-col :span="22">
             <el-col :offset="1" :span="23">
@@ -37,6 +38,7 @@
             </el-col>
           </el-col>
         </el-row>
+
         <el-row>
           <el-col :span="5" class="col1">
             <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="list"/>
@@ -91,7 +93,6 @@ export default {
 
   .aside {
     overflow: hidden;
-    width: 26.174vw;
   }
 
   h1 {
@@ -147,13 +148,6 @@ export default {
   .el-main {
     width: 34.157vw;
   }
-
-  //:deep(.el-header) {
-  //  width: 34.157vw;
-  //  margin-left: 2vw;
-  //  height: 9.459vw;
-  //  font-size: 0.841vw;
-  //}
 
   :deep(.el-button .iconfont) {
     font-size: inherit;
