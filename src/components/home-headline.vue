@@ -168,7 +168,7 @@ export default {
 
   .header-image-container {
     background-color: white;
-    background-image: url("../assets/geisel_library.jpeg");
+    background-image: url("../assets/geisel-library.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

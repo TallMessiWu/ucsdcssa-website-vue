@@ -1,9 +1,10 @@
 <template>
-  <h1>department</h1>
+  <department-intro/>
 </template>
 
 <script setup>
 
+import DepartmentIntro from "../components/department-intro.vue";
 </script>
 
 <script>
