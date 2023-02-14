@@ -17,35 +17,28 @@
         </div>
         <div class="department-name">
           <el-row
-              style="font-size: xx-large; font-weight: bold; margin-top: 15px; margin-bottom: 15px;">
+              style="font-size: 2.222vw; font-weight: bold; margin-top: 1.042vw; margin-bottom: 1.042vw;">
             {{ data.name }}
           </el-row>
         </div>
         <div class="description">
-          <el-row style="font-size: 15px; white-space: pre-wrap">{{
-              data.intro
-            }}
+          <el-row style="font-size: 1.042vw; white-space: pre-wrap">
+            {{data.intro}}
           </el-row>
         </div>
         <div class="epigram-container">
           <div class="epigram">
-            <blockquote>
-              <i class="icofont-quote-left quote-left">""""</i>
-              <p>
-                {{ data.epigram }}
-              </p>
-              <i class="las la-quote-right quote-right"></i>
-              <i class="icofont-quote-right quote-right"></i>
-            </blockquote>
+            <img class="quote-left" src="../assets/quote-left.svg"/>
+            {{ data.epigram }}
+            <img class="quote-right" src="../assets/quote-right.svg"/>
           </div>
         </div>
         <div class="recruit">
           <div v-html="data.recruit"></div>
         </div>
         <div class="slogan">
-          <p style="text-align: center; font-weight: bold; font-size: 19.2px">{{
-              data.slogan
-            }}</p>
+          <p style="text-align: center; font-weight: bold; font-size: 1.333vw">
+            {{data.slogan}}</p>
         </div>
       </div>
     </el-main>
@@ -96,29 +89,30 @@ export default {
 
 <style scoped lang="less">
 
+.el-header{
+  height: 4.167vw;
+}
 .navi {
   background-color: #f8f4f4;
-  height: 4.167vw;
   width: 100%;
   flex-direction: column;
-
 }
 
 ul.breadcrumb {
   list-style: none;
-  margin-left: 120px;
-  padding: 20px;
+  margin-left: 8.333vw;
+  padding: 1.389vw;
 }
 
 /* Display list items side by side */
 ul.breadcrumb li {
   display: inline;
-  font-size: 14px;
+  font-size: 0.972vw;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
 ul.breadcrumb li + li:before {
-  padding: 8px;
+  padding: 0.556vw;
   color: black;
   content: "/\00a0";
 }
@@ -134,19 +128,17 @@ ul.breadcrumb li a:hover {
   color: #ff7e53;
 }
 
-//
 :deep(.el-main) {
   background-color: white;
   z-index: 10;
 }
 
-
 .container {
-  margin-top: 50px;
-  width: 930px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
-  margin-left: 135px;
-  padding: 20px;
+  margin-top: 3.472vw;
+  width: 64.583vw;
+  box-shadow: 0vw 0.347vw 0.694vw 0vw rgba(0, 0, 0, 0.1);
+  margin-left: 9.375vw;
+  padding: 1.389vw;
   background-color: white;
 }
 
@@ -154,23 +146,46 @@ ul.breadcrumb li a:hover {
 }
 
 .epigram-container {
-  height: 100px;
+  height: 10.417vw;
   background-color: whitesmoke;
-  margin-top: 20px;
+  margin-top: 1.389vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.epigram-container:after {
+  content: '';
+  width: 0.278vw;
+  height: 7.917vw;
+  background: #473d3a;
+  position: absolute;
+  left: 0vw;
 }
 
 .epigram {
   font-style: italic;
-  font-size: larger;
-  font-family: "Lucida Console";
-  justify-content: center;
-  margin-left: 30px;
-  border-left-width: 10px;
+  font-size: 1.333vw;
+}
 
+.quote-left {
+  width: 2.778vw;
+  position: absolute;
+  top: 1.389vw;
+  left: 1.389vw;
+}
+
+.quote-right {
+  width: 2.778vw;
+  position: absolute;
+  bottom: 1.389vw;
+  right: 1.389vw;
 }
 
 .recruit {
   flex-direction: column;
+  font-size: 1.111vw;
 }
 
 .recruit-title {
@@ -180,15 +195,21 @@ ul.breadcrumb li a:hover {
 
 .slogan {
   font-size: larger;
-  height: 50px;
+  height: 3.472vw;
 }
-ul{
 
+strong{
+  font-size: 1.111vw;
 }
-li{
-
+ul {
+  font-size: 1.111vw;
 }
-p{
 
+li {
+  font-size: 1.111vw;
+}
+
+p {
+  font-size: 1.111vw;
 }
 </style>
