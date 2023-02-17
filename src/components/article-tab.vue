@@ -1,13 +1,17 @@
+<!--公众号板块组件-->
 <template>
   <el-container class="article">
     <el-main>
+      <!--板块标题-->
       <el-row justify="center">
-        <el-image style="height:20vw" :src="getAssetsFile('logo.png')" fit="contain"></el-image>
+        <el-image style="height:20vw" :src="img_src" fit="contain"></el-image>
+<!--        {{img_src}}-->
       </el-row>
+      <!--板块标题+板块标签-->
       <el-row>
         <div class="articles-content">
-          <h3 style="color:darkred; font-size: 1vw">UCSD 2025er看过来！新生大礼包+新生群来啦！</h3>
-          <p style="font-size: 0.8vw;">新生必读</p>
+          <h3 style="color:darkred; font-size: 1vw">{{ title }}</h3>
+          <p style="font-size: 0.8vw;">{{ type }}</p>
         </div>
       </el-row>
 
@@ -18,6 +22,20 @@
 
 <script setup>
 import {getAssetsFile} from "../utils/getAssetsFile";
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  title: {
+    type: String
+  },
+  type: {
+    type: String
+  },
+  img_src: {
+    type: String
+  }
+})
+
 </script>
 
 <script>
