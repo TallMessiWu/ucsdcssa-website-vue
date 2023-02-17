@@ -1,5 +1,6 @@
 <template>
   <el-container>
+    <!--导航栏-->
     <el-header>
       <div class="navi">
         <ul class="breadcrumb">
@@ -8,24 +9,29 @@
         </ul>
       </div>
     </el-header>
+    <!--内容-->
     <el-main>
       <div class="container">
+        <!--照片-->
         <div class="image">
           <div class="demo-image">
             <el-image :src="getAssetsFile(data.groupPhoto)" :fit="'fill'"/>
           </div>
         </div>
+        <!--部门名称-->
         <div class="department-name">
           <el-row
               style="font-size: 2.222vw; font-weight: bold; margin-top: 1.042vw; margin-bottom: 1.042vw;">
             {{ data.name }}
           </el-row>
         </div>
+        <!--部门简介-->
         <div class="description">
           <el-row style="font-size: 1.042vw; white-space: pre-wrap">
             {{data.intro}}
           </el-row>
         </div>
+        <!--部门名言-->
         <div class="epigram-container">
           <div class="epigram">
             <img class="quote-left" src="../assets/quote-left.svg"/>
@@ -33,6 +39,7 @@
             <img class="quote-right" src="../assets/quote-right.svg"/>
           </div>
         </div>
+        <!--部门招新-->
         <div class="recruit">
           <div v-html="data.recruit"></div>
         </div>
@@ -198,9 +205,6 @@ ul.breadcrumb li a:hover {
   height: 3.472vw;
 }
 
-strong{
-  font-size: 1.111vw;
-}
 ul {
   font-size: 1.111vw;
 }
