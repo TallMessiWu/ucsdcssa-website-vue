@@ -1,27 +1,34 @@
 <template>
   <el-container>
     <el-header class="common">
+
       <el-row justify="space-between" align="middle">
+
+        <!--CSSA LOGO-->
         <el-col :span="12" :offset="2">
           <el-row align="middle">
             <el-image class="logo" :src="getAssetsFile('logo-with-text.png')" fit="fit"></el-image>
           </el-row>
         </el-col>
+
         <el-col :span="10">
           <el-row justify="space-between" align="middle">
 
+            <!--主页按钮-->
             <el-col :span="2.5">
               <div>
                 <el-button type="plain" class="el-dropdown-link" link>主页</el-button>
               </div>
             </el-col>
 
+            <!--关于CSSA按钮-->
             <el-col :span="4.5">
               <div>
                 <el-button type="plain" class="el-dropdown-link" link>关于CSSA</el-button>
               </div>
             </el-col>
 
+            <!--学生服务折叠面板-->
             <el-col :span="3.5">
               <el-dropdown>
           <span class="el-dropdown-link">
@@ -43,6 +50,7 @@
               </el-dropdown>
             </el-col>
 
+            <!--活动折叠面板-->
             <el-col :span="3.75">
               <el-dropdown>
           <span class="el-dropdown-link">
@@ -62,6 +70,7 @@
               </el-dropdown>
             </el-col>
 
+            <!--部门折叠面板-->
             <el-col :span="3.75">
               <el-dropdown>
           <span class="el-dropdown-link">
@@ -85,6 +94,7 @@
               </el-dropdown>
             </el-col>
 
+            <!--校内社团介绍折叠面板-->
             <el-col :span="6">
               <el-dropdown>
           <span class="el-dropdown-link">
@@ -126,8 +136,15 @@ export default {
 </script>
 
 <style scoped lang="less">
-.el-icon--right {
-  margin-left: -0.15vw;
+.common {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  width: 15vw;
 }
 
 .el-dropdown-link {
@@ -138,14 +155,7 @@ export default {
   line-height: 2.5vw;
 }
 
-.common {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.logo {
-  width: 15vw;
+.el-icon--right {
+  margin-left: -0.15vw;
 }
 </style>
