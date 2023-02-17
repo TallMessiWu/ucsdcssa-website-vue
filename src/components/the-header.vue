@@ -126,6 +126,14 @@ export default {
 </script>
 
 <style scoped lang="less">
+
+.common {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .el-icon--right {
   margin-left: -0.15vw;
 }
@@ -136,13 +144,6 @@ export default {
   white-space: nowrap;
   vertical-align: baseline;
   line-height: 2.5vw;
-}
-
-.common {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .logo {
