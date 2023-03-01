@@ -158,10 +158,7 @@
 </template>
 
 <script setup>
-import {
-  Document, SwitchFilled, Van, Right
-} from '@element-plus/icons-vue'
-</script>
+import {Document, Right, SwitchFilled, Van} from '@element-plus/icons-vue'</script>
 
 <script>
 export default {
@@ -172,12 +169,12 @@ export default {
 <style scoped lang="less">
 
   .header-image-container {
-  background-color: white;
-  background-image: url("../assets/geisel_library.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
+    background-color: white;
+    background-image: url("../assets/geisel-library.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 
   .main {
   overflow: visible;

@@ -126,8 +126,7 @@
 
 <script setup>
 import {getAssetsFile} from "../utils/getAssetsFile";
-import { ArrowDown } from '@element-plus/icons-vue';
-</script>
+import {ArrowDown} from '@element-plus/icons-vue';</script>
 
 <script>
 export default {
@@ -136,26 +135,31 @@ export default {
 </script>
 
 <style scoped lang="less">
-.common {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .common {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.logo {
-  width: 15vw;
-}
+  .logo {
+    width: 15vw;
+  }
 
-.el-dropdown-link {
-  font-family: sans-serif;
-  font-size: 1vw;
-  white-space: nowrap;
-  vertical-align: baseline;
-  line-height: 2.5vw;
-}
+  .el-dropdown-link {
+    font-family: sans-serif;
+    font-size: 1vw;
+    white-space: nowrap;
+    vertical-align: baseline;
+    line-height: 2.5vw;
+  }
 
-.el-icon--right {
-  margin-left: -0.15vw;
-}
+  :deep(.el-dropdown-menu__item:not(.is-disabled):focus) {
+    background-color: rgba(253, 226, 226, 255);
+    color: rgba(196, 86, 86, 255);
+  }
+
+  .el-icon--right {
+    margin-left: -0.15vw;
+  }
 </style>

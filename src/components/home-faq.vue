@@ -11,6 +11,8 @@
       <!--主要区域容器-->
       <el-main>
         <br>
+        <br>
+        <br>
         <!--collapse折叠面板组件：手风琴效果-->
         <el-collapse accordion>
           <!--第一个折叠面板-->
@@ -108,8 +110,7 @@
 </template>
 
 <script setup>
-import {QuestionFilled} from '@element-plus/icons-vue'
-</script>
+import {QuestionFilled} from '@element-plus/icons-vue'</script>
 
 <script>
 export default {
