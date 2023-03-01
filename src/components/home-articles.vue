@@ -11,7 +11,6 @@
     <el-main>
       <el-row justify="center">
         <el-tabs stretch class="article-tab">
-
           <el-tab-pane class="article-tab-pane" label="全部">
             <el-row justify="center">
               <el-col :span="8">

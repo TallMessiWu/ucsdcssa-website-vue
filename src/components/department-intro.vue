@@ -11,13 +11,13 @@
     </el-header>
     <!--内容-->
     <el-main>
-      <div class="container">
-        <!--照片-->
-        <div class="image">
+      <div class="intro-container">
+        <!--部门照片-->
+        <el-row class="image">
           <div class="demo-image">
             <el-image :src="getAssetsFile(data.groupPhoto)" :fit="'fill'"/>
           </div>
-        </div>
+        </el-row>
         <!--部门名称-->
         <div class="department-name">
           <el-row
@@ -27,39 +27,92 @@
         </div>
         <!--部门简介-->
         <div class="description">
-          <el-row style="font-size: 1.042vw; white-space: pre-wrap">
-            {{data.intro}}
-          </el-row>
+          <el-col style="font-size: 1.042vw; white-space: pre-wrap">
+            {{ data.intro }}
+          </el-col>
         </div>
         <!--部门名言-->
         <div class="epigram-container">
-          <div class="epigram">
-            <img class="quote-left" src="../assets/quote-left.svg"/>
+          <img class="quote-left" src="../assets/quote-left.svg"/>
+          <p class="epigram">
             {{ data.epigram }}
-            <img class="quote-right" src="../assets/quote-right.svg"/>
-          </div>
+          </p>
+          <img class="quote-right" src="../assets/quote-right.svg"/>
         </div>
         <!--部门招新-->
         <div class="recruit">
-          <div v-html="data.recruit"></div>
+          <el-col v-html="data.recruit"></el-col>
         </div>
+        <!--部门口号-->
         <div class="slogan">
           <p style="text-align: center; font-weight: bold; font-size: 1.333vw">
-            {{data.slogan}}</p>
+            {{ data.slogan }}</p>
         </div>
+      </div>
+      <div class="articles-container">
+        <!--部门项目-->
+        <el-col>
+          <el-row class="row-bg" justify="space-evenly" :gutter="60">
+            <el-col :span="8">
+              <article-tab/>
+            </el-col>
+            <el-col :span="8">
+              <article-tab/>
+            </el-col>
+            <el-col :span="8">
+              <article-tab/>
+            </el-col>
+          </el-row>
+          <el-row class="row-bg" justify="space-evenly" :gutter="60">
+            <el-col :span="8">
+              <article-tab/>
+            </el-col>
+            <el-col :span="8">
+              <article-tab/>
+            </el-col>
+            <el-col :span="8">
+              <article-tab/>
+            </el-col>
+          </el-row>
+        </el-col>
       </div>
     </el-main>
 
+    <!-- 部门成员 -->
+    <div class="section-title">
+      <h2 style="font-size: 2.222vw; font-weight: bold">部门成员</h2>
+      <p></p>
+      <p>2023 - 2024</p>
+    </div>
+    <div class="members-container">
+      <el-col>
+        <el-row class="row-bg" justify="space-evenly" :gutter="60">
+          <el-col :span="6">
+            <department-tab :url="membersData.imgUrl" :member-name="membersData.memberName" :position="membersData.position"/>
+          </el-col>
+<!--          <el-col :span="6">-->
+<!--            <department-tab/>-->
+<!--          </el-col>-->
+<!--          <el-col :span="6">-->
+<!--            <department-tab/>-->
+<!--          </el-col>-->
+<!--          <el-col :span="6">-->
+<!--            <department-tab/>-->
+<!--          </el-col>-->
+        </el-row>
+      </el-col>
+    </div>
   </el-container>
 
 </template>
 
 <script setup>
 import {getAssetsFile} from "../utils/getAssetsFile";
+import DepartmentTab from "./department-tab.vue";
 
 const data = {
   "id": "kaifa",
-  "groupPhoto": "全体合照.jpeg",
+  "groupPhoto": "开发部合照.jpg",
   "name": "开发部",
   "intro": "CSSA开发部是一个聚集了资深程序员，并为CSSA提供软件的技术支持。我们的工作包括程序开发，网站搭建与维护。\n\n开发部欢迎所有对程序开发和写网页感兴趣的同学。我们不限制专业，也不强制每个人都有极强的编程实力。只要你愿意学习新技能以及与他人合作，开发部将会是你提升个人能力与积攒宝贵经验的平台。",
   "epigram": "每一次写代码都当最后一次写，然后就也不要怕出bug。3、2、1，加油！",
@@ -83,7 +136,11 @@ const data = {
   "slogan": "加入我们，让我们一起苦练杂技，做出让我们引以为傲的作品吧！",
 
 }
-
+const membersData = {
+  "imgUrl": '开发部-吴俊霖-部长.jpg',
+  "memberName": '吴俊霖',
+  "position": '尊贵的部长'
+}
 </script>
 
 <script>
@@ -96,9 +153,14 @@ export default {
 
 <style scoped lang="less">
 
-.el-header{
+.el-header {
   height: 4.167vw;
 }
+
+.el-row {
+  margin-bottom: 1.389vw;
+}
+
 .navi {
   background-color: #f8f4f4;
   width: 100%;
@@ -137,16 +199,17 @@ ul.breadcrumb li a:hover {
 
 :deep(.el-main) {
   background-color: white;
-  z-index: 10;
+  //z-index: 10;
 }
 
-.container {
+.intro-container {
   margin-top: 3.472vw;
   width: 64.583vw;
   box-shadow: 0vw 0.347vw 0.694vw 0vw rgba(0, 0, 0, 0.1);
   margin-left: 9.375vw;
   padding: 1.389vw;
   background-color: white;
+  color: #313030;
 }
 
 .description {
@@ -154,12 +217,13 @@ ul.breadcrumb li a:hover {
 
 .epigram-container {
   height: 10.417vw;
-  background-color: whitesmoke;
+  background-color: #fffcfc;
   margin-top: 1.389vw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  font-family: "Open Sans";
 }
 
 .epigram-container:after {
@@ -171,16 +235,20 @@ ul.breadcrumb li a:hover {
   left: 0vw;
 }
 
-.epigram {
-  font-style: italic;
-  font-size: 1.333vw;
-}
-
 .quote-left {
   width: 2.778vw;
   position: absolute;
   top: 1.389vw;
   left: 1.389vw;
+}
+
+.epigram {
+  justify-content: center;
+  width: 52.7366vw;
+  text-align: center;
+  font-size: 1.597vw;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .quote-right {
@@ -201,19 +269,30 @@ ul.breadcrumb li a:hover {
 }
 
 .slogan {
-  font-size: larger;
+  font-size: 1.389vw;
   height: 3.472vw;
 }
 
-ul {
-  font-size: 1.111vw;
+.articles-container {
+  display: flex;
+  justify-content: center;
+  margin: 4.375vw 9.375vw 4.375vw 9.375vw;
+  color: #313030;
 }
 
-li {
-  font-size: 1.111vw;
+.section-title {
+  text-align: center;
+  color: #635551;
+  font-family: sans-serif;
+  margin-bottom: 1.111vw;
 }
 
-p {
-  font-size: 1.111vw;
+.members-container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  color: #313030;
 }
+
 </style>
