@@ -1,17 +1,23 @@
 <template>
 
+  <!--播放bilibili视频-->
   <el-dialog v-model="dialogVisible" title="CSSA宣传片" width="70%" destroy-on-close>
     <iframe class="player" src="//player.bilibili.com/player.html?aid=906602710&bvid=BV19M4y1D7Dt&cid=1001206853&page=1"
             border="0" framespacing="0" allowfullscreen="true">
     </iframe>
   </el-dialog>
 
+
   <el-container class="container">
+
+    <!--插入aside照片（全体合照）-->
     <el-aside class="aside" width="26.174vw">
       <el-row justify="center">
         <el-col :span="24">
           <el-image style="width: 26.274vw; height: 36.784vw" :src="getAssetsFile('全体合照.jpeg')"
                     fit="cover"></el-image>
+
+          <!--视频播放键-->
           <div class="video">
             <el-button color="#a0342c" bg :icon="CaretRight" circle @click="dialogVisible=true"/>
           </div>
@@ -22,6 +28,8 @@
 
     <el-container>
       <el-main>
+        
+        <!--大标题-->
         <el-row>
           <el-col :offset="1" :span="23">
             <h1>什么是CSSA？</h1>
@@ -40,9 +48,11 @@
         </el-row>
 
         <el-row>
+          <!--图片右边第一个箭头-->
           <el-col :span="5" class="col1">
-            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="list"/>
+            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"/>
           </el-col>
+          <!--图片右边第一个小标题-->
           <el-col :span="12">
             <h1>我们致力于</h1>
             <p class="text">团结和服务中国学生学者；丰富中国学生学者的社交、学术、职业体验；促进中美文化交流与了解</p>
@@ -50,9 +60,11 @@
         </el-row>
 
         <el-row>
+          <!--图片右边第二个箭头-->
           <el-col :span="5">
-            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="list"/>
+            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"/>
           </el-col>
+          <!--图片右边第二个小标题-->
           <el-col :span="12">
             <h1>我们的价值观</h1>
             <p class="text">服务中国学生、学者是CSSA的立会之本。UCSD中国学生、学者的集体利益应永远高于CSSA的社团利益。“满足UCSD中国学生、学者的实际需求，使学生、学者受益”
@@ -61,9 +73,11 @@
         </el-row>
 
         <el-row justify="start">
+          <!--图片右边第三个箭头-->
           <el-col :span="5">
-            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="list"/>
+            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"/>
           </el-col>
+          <!--图片右边第三个小标题-->
           <el-col :span="12">
             <div/>
             <h1>我们希望</h1>
@@ -91,8 +105,29 @@ export default {
 
 <style scoped lang="less">
 
+  .player {
+    width: 60.431vw;
+    height: 34.157vw;
+  }
+
+  .container {
+    left: 25%;
+    font-family: sans-serif;
+    padding-top: 2vw;
+    padding-left: 20%;
+    width: 100%;
+  }
+
   .aside {
     overflow: hidden;
+  }
+
+  .video {
+    position: relative;
+    top: -50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
   }
 
   h1 {
@@ -112,41 +147,19 @@ export default {
     color: #3d3f41;
   }
 
-  .text {
-    width: 22.596vw;
-    font-size: 0.736vw;
+  .el-main {
+    width: 34.157vw;
   }
 
-
-  .container {
-    left: 25%;
-    font-family: sans-serif;
-    padding-top: 2vw;
-    padding-left: 20%;
-    width: 100%;
-  }
-
-  .video {
-    position: relative;
-    top: -50%;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-  }
-
-  .player {
-    width: 60.431vw;
-    height: 34.157vw;
-  }
-
-  .list {
+  .arrow {
     position: relative;
     top: 35%;
     left: 30%;
   }
 
-  .el-main {
-    width: 34.157vw;
+  .text {
+    width: 22.596vw;
+    font-size: 0.736vw;
   }
 
   :deep(.el-button .iconfont) {

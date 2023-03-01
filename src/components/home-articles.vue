@@ -1,5 +1,8 @@
+<!--公众号热门推荐板块-->
 <template>
   <el-container class="container">
+
+    <!--顶部标题+小标题-->
     <el-header>
       <el-row justify="center">
         <h2>近期公众号热门</h2>
@@ -8,27 +11,32 @@
         <p>点击标题阅读原文，或点击这里扫码关注我们</p>
       </el-row>
     </el-header>
+
+    <!--主体板块-->
     <el-main>
       <el-row justify="center">
+
+        <!--板块种类区分-->
         <el-tabs stretch class="article-tab">
+          <!--具体种类所属的板块-->
           <el-tab-pane class="article-tab-pane" label="全部">
             <el-row justify="center">
               <el-col :span="8">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
               <el-col :span="8">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
               <el-col :span="8">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
             </el-row>
             <el-row justify="center">
               <el-col :span="12">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
               <el-col :span="12">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
             </el-row>
 
@@ -37,18 +45,18 @@
           <el-tab-pane class="article-tab-pane" label="活动回顾">
             <el-row justify="center">
               <el-col :span="8">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
               <el-col :span="8">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
               <el-col :span="8">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
             </el-row>
             <el-row justify="center">
               <el-col :span="24">
-                <article-tab/>
+                <article-tab :title="title" :type="type" :img_src="img_src"/>
               </el-col>
             </el-row>
           </el-tab-pane>
@@ -72,6 +80,13 @@
 
 <script setup>
 import ArticleTab from "../components/article-tab.vue";
+import {getAssetsFile} from "../utils/getAssetsFile";
+
+const title = $ref("新生教程｜新生体检&疫苗&TB Test超详细攻略")
+const type = $ref("新生必读")
+const img_src = $ref(getAssetsFile('logo.png'))
+
+console.log(img_src)
 </script>
 
 <script>
@@ -112,7 +127,6 @@ export default {
     flex-wrap: wrap;
     padding: 0.5vw;
   }
-
 
   :deep(.el-tabs__active-bar) {
     background-color: darkred;
