@@ -81,14 +81,14 @@
           </span>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item>PM</el-dropdown-item>
-                    <el-dropdown-item>外联部</el-dropdown-item>
-                    <el-dropdown-item>学术部</el-dropdown-item>
-                    <el-dropdown-item>宣传部</el-dropdown-item>
-                    <el-dropdown-item>文体部</el-dropdown-item>
-                    <el-dropdown-item>开发部</el-dropdown-item>
-                    <el-dropdown-item>人事部</el-dropdown-item>
-                    <el-dropdown-item>新媒体部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('PM')">PM</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('外联部')">外联部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('学术部')">学术部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('宣传部')">宣传部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('文体部')">文体部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('开发部')">开发部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('人事部')">人事部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('新媒体部')">新媒体部</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
@@ -126,7 +126,21 @@
 
 <script setup>
 import {getAssetsFile} from "../utils/getAssetsFile";
-import {ArrowDown} from '@element-plus/icons-vue';</script>
+import {ArrowDown} from '@element-plus/icons-vue';
+import {useRouter} from "vue-router"
+
+const router = useRouter();
+
+function goToDepartment(departmentName) {
+  router.push({
+    name: 'Department',
+    // params现在必须定义在地址里了 https://www.cnblogs.com/liao-yi/articles/17028269.html
+    params: {
+      departmentName
+    }
+  })
+}
+</script>
 
 <script>
 export default {
