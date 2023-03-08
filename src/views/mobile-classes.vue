@@ -12,9 +12,8 @@
             <van-collapse v-for="course in result" v-model="activeNames"
                           accordion>
               <van-collapse-item :title="course" :name="course">
-                <van-image :src="`${classified.backendAddress}/courses/${course}/${id}/${token}`" alt=""
-                           @error="getCourseFailed" lazy-load width="100%"
-                           ref="img">
+                <van-image :src="`${classified.backendAddress}/courses/${course}/${id}/${token}`" alt="" lazy-load
+                           width="100%">
                   <template #loading>
                     <div class="loading-container">
                       <van-loading type="spinner" size="60"/>
@@ -36,9 +35,8 @@
             <div class="group-container">
               <van-collapse v-for="course in courses" v-model="activeNames" accordion>
                 <van-collapse-item :title="course" :name="course">
-                  <van-image :src="`${classified.backendAddress}/courses/${course}/${id}/${token}`" alt=""
-                             @error="getCourseFailed" lazy-load width="100%"
-                             ref="img">
+                  <van-image :src="`${classified.backendAddress}/courses/${course}/${id}/${token}`" alt="" lazy-load
+                             width="100%">
                     <template #loading>
                       <div class="loading-container">
                         <van-loading type="spinner" size="60"/>
@@ -108,14 +106,6 @@ function getCoursesGrouped() {
 }
 
 getCoursesGrouped()
-
-function getCourseFailed() {
-  Toast.fail("登录过期，请重新登录");
-  localStorage.removeItem("token")
-  localStorage.removeItem("id")
-  loading = false
-  router.replace({name: "MobileLoginRegister", query: {destination: "/mobile/classes"}})
-}
 
 // 刷新功能
 let loading = $ref(false);
