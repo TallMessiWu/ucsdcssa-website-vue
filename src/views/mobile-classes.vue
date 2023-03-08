@@ -12,7 +12,8 @@
             <van-collapse v-for="course in result" v-model="activeNames"
                           accordion>
               <van-collapse-item :title="course" :name="course">
-                <van-image :src="`${classified.backendAddress}/courses/${course}`" alt="" lazy-load width="100%"
+                <van-image :src="`${classified.backendAddress}/courses/${course}/${id}/${token}`" alt=""
+                           @error="getCourseFailed" lazy-load width="100%"
                            ref="img">
                   <template #loading>
                     <div class="loading-container">
@@ -35,7 +36,8 @@
             <div class="group-container">
               <van-collapse v-for="course in courses" v-model="activeNames" accordion>
                 <van-collapse-item :title="course" :name="course">
-                  <van-image :src="`${classified.backendAddress}/courses/${course}`" alt="" lazy-load width="100%"
+                  <van-image :src="`${classified.backendAddress}/courses/${course}/${id}/${token}`" alt=""
+                             @error="getCourseFailed" lazy-load width="100%"
                              ref="img">
                     <template #loading>
                       <div class="loading-container">
@@ -72,6 +74,9 @@ const router = useRouter()
 let coursesGrouped = $ref({})
 let courses = []
 
+const id = localStorage.getItem("id")
+const token = localStorage.getItem("token")
+
 function getCoursesGrouped() {
   Toast.loading({
     duration: 0,
@@ -82,8 +87,8 @@ function getCoursesGrouped() {
   axios.get(
       "/courses", {
         headers: {
-          token: localStorage.getItem("token"),
-          id: localStorage.getItem("id")
+          token,
+          id
         }
       })
       .then(res => {
@@ -103,6 +108,14 @@ function getCoursesGrouped() {
 }
 
 getCoursesGrouped()
+
+function getCourseFailed() {
+  Toast.fail("登录过期，请重新登录");
+  localStorage.removeItem("token")
+  localStorage.removeItem("id")
+  loading = false
+  router.replace({name: "MobileLoginRegister", query: {destination: "/mobile/classes"}})
+}
 
 // 刷新功能
 let loading = $ref(false);
