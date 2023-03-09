@@ -136,7 +136,6 @@ export default {
 
   .slogan {
     font-size: 1.2vw;
-    height: 3.472vw;
   }
 
 </style>

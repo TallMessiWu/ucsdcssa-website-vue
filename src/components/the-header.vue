@@ -84,14 +84,14 @@
           </span>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item @click="goToDepartment('PM')">PM</el-dropdown-item>
-                    <el-dropdown-item @click="goToDepartment('外联部')">外联部</el-dropdown-item>
-                    <el-dropdown-item @click="goToDepartment('学术部')">学术部</el-dropdown-item>
-                    <el-dropdown-item @click="goToDepartment('宣传部')">宣传部</el-dropdown-item>
-                    <el-dropdown-item @click="goToDepartment('文体部')">文体部</el-dropdown-item>
                     <el-dropdown-item @click="goToDepartment('开发部')">开发部</el-dropdown-item>
                     <el-dropdown-item @click="goToDepartment('人事部')">人事部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('外联部')">外联部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('文体部')">文体部</el-dropdown-item>
                     <el-dropdown-item @click="goToDepartment('新媒体部')">新媒体部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('宣传部')">宣传部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('学术部')">学术部</el-dropdown-item>
+                    <el-dropdown-item @click="goToDepartment('主席团')">主席团</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
