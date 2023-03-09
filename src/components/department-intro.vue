@@ -26,18 +26,18 @@
           <div class="epigram-container">
             <img class="quote-left" src="../assets/quote-left.svg"/>
             <p class="epigram">
-              {{ departmentData.epigram }}
+              {{ departmentData["epigram"] }}
             </p>
             <img class="quote-right" src="../assets/quote-right.svg"/>
           </div>
           <!--部门招新-->
           <div class="recruit">
-            <el-col v-html="departmentData.recruit"></el-col>
+            <el-col v-html="departmentData['recruit']"></el-col>
           </div>
           <!--部门口号-->
           <div class="slogan">
             <p style="text-align: center; font-weight: bold; font-size: 1.333vw">
-              {{ departmentData.slogan }}</p>
+              {{ departmentData["slogan"] }}</p>
           </div>
         </div>
       </el-row>
