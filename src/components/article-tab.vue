@@ -21,8 +21,7 @@
 </template>
 
 <script setup>
-import {getAssetsFile} from "../utils/getAssetsFile";
-import { defineProps } from 'vue';
+import {defineProps} from 'vue';
 
 const props = defineProps({
   title: {
@@ -49,7 +48,7 @@ export default {
     width: 20vw;
     height: 30vw;
     margin-right: 2vw;
-    margin-bottom: 2vw;
+    margin-bottom: 3vw;
   }
 
   .articles-content {

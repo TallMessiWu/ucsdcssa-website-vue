@@ -7,7 +7,7 @@
         <!--CSSA LOGO-->
         <el-col :span="12" :offset="2">
           <el-row align="middle">
-            <el-image class="logo" :src="getAssetsFile('logo-with-text.png')" fit="fit"></el-image>
+            <el-image class="logo" :src="getAssetsFile('logo-with-text.png')" fit="contain"></el-image>
           </el-row>
         </el-col>
 
@@ -15,18 +15,21 @@
           <el-row justify="space-between" align="middle">
 
             <!--主页按钮-->
-            <el-col :span="2.5">
+            <!--<el-col :span="2.5">-->
+            <el-col :offset="10" :span="2.5">
               <div>
-                <el-button type="plain" class="el-dropdown-link" link>主页</el-button>
+                <el-button type="plain" class="el-dropdown-link" link @click="router.replace({name: 'Home'})">主页
+                </el-button>
               </div>
             </el-col>
 
             <!--关于CSSA按钮-->
-            <el-col :span="4.5">
-              <div>
-                <el-button type="plain" class="el-dropdown-link" link>关于CSSA</el-button>
-              </div>
-            </el-col>
+            <!--锚点做起来太麻烦，感觉没有必要，先去掉吧-->
+            <!--<el-col :span="4.5">-->
+            <!--  <div>-->
+            <!--    <el-button type="plain" class="el-dropdown-link" link @click="goAnchor('homeintro')">关于CSSA</el-button>-->
+            <!--  </div>-->
+            <!--</el-col>-->
 
             <!--学生服务折叠面板-->
             <el-col :span="3.5">
@@ -51,27 +54,27 @@
             </el-col>
 
             <!--活动折叠面板-->
-            <el-col :span="3.75">
-              <el-dropdown>
-          <span class="el-dropdown-link">
-            活动
-            <el-icon class="el-icon--right">
-              <arrow-down/>
-            </el-icon>
-          </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item>活动主页</el-dropdown-item>
-                    <el-dropdown-item>开学季活动</el-dropdown-item>
-                    <el-dropdown-item>春节系列活动</el-dropdown-item>
-                    <el-dropdown-item>春季篮球赛</el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </el-col>
+            <!--  <el-col :span="3.75">-->
+            <!--    <el-dropdown>-->
+            <!--<span class="el-dropdown-link">-->
+            <!--  活动-->
+            <!--  <el-icon class="el-icon&#45;&#45;right">-->
+            <!--    <arrow-down/>-->
+            <!--  </el-icon>-->
+            <!--</span>-->
+            <!--      <template #dropdown>-->
+            <!--        <el-dropdown-menu>-->
+            <!--          <el-dropdown-item>活动主页</el-dropdown-item>-->
+            <!--          <el-dropdown-item>开学季活动</el-dropdown-item>-->
+            <!--          <el-dropdown-item>春节系列活动</el-dropdown-item>-->
+            <!--          <el-dropdown-item>春季篮球赛</el-dropdown-item>-->
+            <!--        </el-dropdown-menu>-->
+            <!--      </template>-->
+            <!--    </el-dropdown>-->
+            <!--  </el-col>-->
 
             <!--部门折叠面板-->
-            <el-col :span="3.75">
+            <el-col :span="4">
               <el-dropdown>
           <span class="el-dropdown-link">
             部门
@@ -95,27 +98,28 @@
             </el-col>
 
             <!--校内社团介绍折叠面板-->
-            <el-col :span="6">
-              <el-dropdown>
-          <span class="el-dropdown-link">
-            校内社团介绍
-            <el-icon class="el-icon--right">
-              <arrow-down/>
-            </el-icon>
-          </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item>CES 中国工程学会</el-dropdown-item>
-                    <el-dropdown-item>Chinese Computer Community</el-dropdown-item>
-                    <el-dropdown-item>剧本杀&跑团社团</el-dropdown-item>
-                    <el-dropdown-item>FMO 国风音乐社团</el-dropdown-item>
-                    <el-dropdown-item>海螺心理</el-dropdown-item>
-                    <el-dropdown-item>三晤剧社</el-dropdown-item>
-                    <el-dropdown-item>CCDT 拂衣舞社</el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </el-col>
+            <!--  <el-col :span="6">-->
+            <!--    <el-dropdown>-->
+            <!--<span class="el-dropdown-link">-->
+            <!--  校内社团介绍-->
+            <!--  <el-icon class="el-icon&#45;&#45;right">-->
+            <!--    <arrow-down/>-->
+            <!--  </el-icon>-->
+            <!--</span>-->
+            <!--      <template #dropdown>-->
+            <!--        <el-dropdown-menu>-->
+            <!--          <el-dropdown-item>CES 中国工程学会</el-dropdown-item>-->
+            <!--          <el-dropdown-item>Chinese Computer Community</el-dropdown-item>-->
+            <!--          <el-dropdown-item>剧本杀&跑团社团</el-dropdown-item>-->
+            <!--          <el-dropdown-item>FMO 国风音乐社团</el-dropdown-item>-->
+            <!--          <el-dropdown-item>海螺心理</el-dropdown-item>-->
+            <!--          <el-dropdown-item>三晤剧社</el-dropdown-item>-->
+            <!--          <el-dropdown-item>CCDT 拂衣舞社</el-dropdown-item>-->
+            <!--        </el-dropdown-menu>-->
+            <!--      </template>-->
+            <!--    </el-dropdown>-->
+            <!--  </el-col>-->
+
           </el-row>
         </el-col>
       </el-row>
@@ -139,6 +143,16 @@ function goToDepartment(departmentName) {
       departmentName
     }
   })
+}
+
+function goAnchor(id) {
+  id = "#" + id;
+  console.log(document.querySelector(id))
+  document.querySelector(id).scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "nearest",
+  });
 }
 </script>
 

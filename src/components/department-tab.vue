@@ -2,8 +2,8 @@
   <el-container class="tab">
     <el-main>
       <el-row justify="center">
-        <el-image style="max-height: 27.778vw" :src="getAssetsFile(url)"
-                  fit="fill"></el-image>
+        <el-image class="member-photo" :src="photoSrc"
+                  fit="cover"></el-image>
       </el-row>
       <el-row>
         <div class="members-content">
@@ -20,11 +20,10 @@
 </template>
 
 <script setup>
-import {getAssetsFile} from "../utils/getAssetsFile";
 const props = defineProps({
   memberName: String,
   position: String,
-  url: String
+  photoSrc: String
 })
 </script>
 <script>
@@ -34,20 +33,25 @@ export default {
 </script>
 
 <style scoped lang="less">
-.tab {
-  width: 255px;
-  height: 410px;
-  margin-right: 30px;
-  margin-bottom: 30px;
-}
+  .tab {
+    width: 13.4vw;
+    margin-right: 1.576vw;
+    margin-bottom: 1.576vw;
+  }
 
-.members-content {
-  height: 100%;
-  width: 100%;
-  opacity: 0.8;
-  z-index: 3;
-  transition: all ease-in-out 0.1s;
-  background: white;
+  .member-photo {
+    width: 15vw;
+    height: 16vw;
+
+  }
+
+  .members-content {
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    z-index: 3;
+    transition: all ease-in-out 0.1s;
+    background: white;
   padding: 1vw;
   border-width: 0.5vw;
   border-color: #c2c2c2;
