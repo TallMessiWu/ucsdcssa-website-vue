@@ -34,14 +34,14 @@ export default {
 
 <style scoped lang="less">
   .tab {
-    width: 13.4vw;
+    width: 18vw;
     margin-right: 1.576vw;
     margin-bottom: 1.576vw;
   }
 
   .member-photo {
-    width: 15vw;
-    height: 16vw;
+    width: 18vw;
+    height: 24vw;
 
   }
 

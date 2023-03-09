@@ -17,122 +17,17 @@
       <el-row justify="center">
 
         <!--板块种类区分-->
-        <el-tabs stretch class="article-tab">
+        <el-tabs stretch class="article-tab" @tab-change="onTabChange">
           <!--具体种类所属的板块-->
-          <el-tab-pane label="全部">
+          <el-tab-pane v-for="category in categories" :label="category" lazy>
             <el-row class="article-tab-pane">
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-            </el-row>
-
-
-          </el-tab-pane>
-
-          <el-tab-pane label="学术干货">
-            <el-row>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
+              <el-col :span="8" v-for="article in articles">
+                <article-tab :title="article['title']" :categories="article['categories']" :cover="article['cover']"
+                             :link="article['link']"/>
               </el-col>
             </el-row>
           </el-tab-pane>
 
-          <el-tab-pane label="生活周边">
-            <el-row>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-            </el-row>
-          </el-tab-pane>
-
-          <el-tab-pane label="新生必读">
-            <el-row>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-            </el-row>
-          </el-tab-pane>
-          <el-tab-pane label="学校政策">
-            <el-row>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-            </el-row>
-          </el-tab-pane>
-          <el-tab-pane label="推广赞助">
-            <el-row>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-            </el-row>
-          </el-tab-pane>
-          <el-tab-pane label="其他">
-            <el-row>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-              <el-col :span="8">
-                <article-tab :title="title" :type="type" :img_src="img_src"/>
-              </el-col>
-            </el-row>
-          </el-tab-pane>
         </el-tabs>
       </el-row>
     </el-main>
@@ -143,10 +38,29 @@
 <script setup>
 import ArticleTab from "../components/article-tab.vue";
 import {getAssetsFile} from "../utils/getAssetsFile";
+import {classified} from "../classified";
+import {inject} from "vue";
 
-const title = $ref("新生教程｜新生体检&疫苗&TB Test超详细攻略")
-const type = $ref("新生必读")
-const img_src = $ref(getAssetsFile('logo.png'))
+const categories = ["全部", "活动推文", "学术干货", "新生必读", "生活周边", "政策要闻", "推广赞助", "其他"]
+let articles = $ref([{
+  title: "新生教程｜新生体检&疫苗&TB Test超详细攻略",
+  categories: "新生必读",
+  cover: getAssetsFile('logo.png')
+}])
+let activeTab = $ref("全部")
+
+const axios = inject('axios')
+
+async function getArticles(category) {
+  articles = (await axios.get(`${classified.backendAddress}/articles/${articles.length}/${category}`)).data
+}
+
+getArticles(activeTab)
+
+function onTabChange(activeTabIndex) {
+  activeTab = categories[activeTabIndex]
+  getArticles(activeTab)
+}
 
 </script>
 
@@ -179,6 +93,10 @@ export default {
 
   .article-tab {
     width: 68vw;
+  }
+
+  .article-tab-pane {
+    padding-left: 0.5vw;
   }
 
   :deep(.el-tabs__active-bar) {
