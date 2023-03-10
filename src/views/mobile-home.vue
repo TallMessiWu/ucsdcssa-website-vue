@@ -33,7 +33,7 @@
                       @click="loadMore">加载更多
           </van-button>
           <!--无内容时显示-->
-          <div v-if="!articles.length">
+          <div v-if="!articles.length" style="margin-bottom: 3vw;">
             无更多内容
           </div>
         </div>
@@ -75,7 +75,7 @@ watch($$(activeTab), () => {
 })
 
 async function getArticles(category) {
-  articles = (await axios.get(`${classified.backendAddress}/articles/${articles.length}/${category}`)).data
+  articles = (await axios.get(`${classified.backendAddress}/articles/0/${category}`)).data
 }
 
 getArticles(activeTab)
