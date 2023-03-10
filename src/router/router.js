@@ -6,7 +6,6 @@ import LoginRegister from "../views/login-register.vue";
 import MobileIndex from "../views/mobile-index.vue";
 import MobileHome from "../views/mobile-home.vue";
 import MobileClasses from "../views/mobile-classes.vue";
-import MobileCard from "../views/mobile-card.vue";
 import MobileCardInstructions from "../views/mobile-card-instructions.vue";
 import MobileLoginRegister from "../views/mobile-login-register.vue";
 import MobileResetPassword from "../views/mobile-reset-password.vue";
@@ -43,18 +42,18 @@ const routes = [
             {
                 path: "home",
                 component: MobileHome,
-                name: "MobileHome",
+                name: "MobileHome"
             },
             {
                 path: "classes",
                 component: MobileClasses,
-                name: "MobileClasses",
+                name: "MobileClasses"
             },
-            {
-                path: "card",
-                component: MobileCard,
-                name: "MobileCard",
-            },
+            // {
+            //     path: "card",
+            //     component: MobileCard,
+            //     name: "MobileCard",
+            // }
         ]
     },
     {

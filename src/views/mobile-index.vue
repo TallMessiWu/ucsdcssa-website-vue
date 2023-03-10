@@ -24,7 +24,7 @@ const route = useRoute()
 const titles = {
   "MobileHome": "主页",
   "MobileClasses": "课友群",
-  "MobileCard": "CSSA卡"
+  // "MobileCard": "CSSA卡",
 }
 let title = $ref(titles[route.name])
 // 监听路由变化

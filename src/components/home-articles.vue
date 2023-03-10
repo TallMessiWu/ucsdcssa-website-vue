@@ -27,6 +27,12 @@
                                   :link="article['link']"/>
               </el-col>
             </el-row>
+            <el-row justify="center" v-if="articles.length">
+              <el-button type="danger" plain round @click="loadMore()" :loading="loading">加载更多</el-button>
+            </el-row>
+            <el-row justify="center" v-if="!articles.length">
+              无更多内容
+            </el-row>
           </el-tab-pane>
 
         </el-tabs>
@@ -38,25 +44,29 @@
 
 <script setup>
 import HomeArticleTab from "./home-article-tab.vue";
-import {getAssetsFile} from "../utils/getAssetsFile";
 import {classified} from "../classified";
+import {staticVariables} from "../staticVariables";
 import {inject} from "vue";
 
-const categories = ["全部", "活动推文", "学术干货", "新生必读", "生活周边", "政策要闻", "推广赞助", "其他"]
-let articles = $ref([{
-  title: "新生教程｜新生体检&疫苗&TB Test超详细攻略",
-  categories: "新生必读",
-  cover: getAssetsFile('logo.png')
-}])
+const categories = staticVariables.categories
+let articles = $ref([])
 let activeTab = $ref("全部")
 
 const axios = inject('axios')
+
+let loading = $ref(false)
 
 async function getArticles(category) {
   articles = (await axios.get(`${classified.backendAddress}/articles/${articles.length}/${category}`)).data
 }
 
 getArticles(activeTab)
+
+async function loadMore() {
+  loading = true
+  articles = articles.concat((await axios.get(`${classified.backendAddress}/articles/${articles.length}/${activeTab}`)).data)
+  loading = false
+}
 
 function onTabChange(activeTabIndex) {
   activeTab = categories[activeTabIndex]
@@ -105,7 +115,7 @@ export default {
   }
 
   .article-tab-pane {
-    padding-left: 0.5vw;
+    padding-left: 1vw;
   }
 
   :deep(.el-tabs__active-bar) {
