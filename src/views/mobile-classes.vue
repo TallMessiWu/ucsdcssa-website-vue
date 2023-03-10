@@ -55,6 +55,9 @@
     </div>
   </van-pull-refresh>
 
+  <el-backtop style="color: rgba(196, 86, 86, 255); --el-backtop-hover-bg-color: rgba(253, 226, 226, 255);" bottom="80"
+              visibility-height="400"/>
+
 </template>
 
 <script setup>

@@ -15,7 +15,9 @@
 
             <!--Wechat image-->
             <el-col :span="2">
-              <el-image :src="getAssetsFile('wechat.png')" class="icon icon-container wechat"></el-image>
+              <a href="/src/assets/公众号海报.jpg" target="_blank">
+                <el-image :src="getAssetsFile('wechat.png')" class="icon icon-container wechat"></el-image>
+              </a>
             </el-col>
 
             <!--Instagram image and link-->

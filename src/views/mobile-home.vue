@@ -1,46 +1,50 @@
 <template>
   <!--这里需要设置css .van-pull-refresh的overflow为visible才能显示全部内容-->
-  <van-pull-refresh v-model="loading" @refresh="onRefresh">
-    <div class="container">
-      <!--头条-->
-      <van-swipe class="swiper" :autoplay="2500" indicator-color="white">
-        <van-swipe-item v-for="article in headlines">
-          <div class="headline-container" @click="goToArticle(article['link'])">
-            <van-image class="headline-cover" :src="article['cover']" fit="cover"/>
-            <div class="headline-title-container">
-              <div class="headline-title">
-                {{ article.title }}
-              </div>
+  <div class="container">
+    <!--头条-->
+    <van-swipe class="swiper" :autoplay="2500" indicator-color="white">
+      <van-swipe-item v-for="article in headlines">
+        <div class="headline-container" @click="goToArticle(article['link'])">
+          <van-image class="headline-cover" :src="article['cover']" fit="cover"/>
+          <div class="headline-title-container">
+            <div class="headline-title">
+              {{ article.title }}
             </div>
           </div>
-        </van-swipe-item>
-      </van-swipe>
-
-      <!--文章-->
-      <van-tabs class="tabs" v-model:active="activeIndex" animated swipeable border title-active-color="#8b0000">
-        <van-tab v-for="category in staticVariables.categories" :title="category">
-          <div class="articles">
-            <div class="article-container" v-for="article in articles" @click="goToArticle(article['link'])">
-              <!--&lt;!&ndash;van-image默认的display是inline-block！！！巨坑，卡了好久，底下老是有缝隙。改成block就好了&ndash;&gt;-->
-              <van-image class="article-cover" :src="article['cover']" fit="cover"></van-image>
-              <div class="article-title">
-                {{ article.title }}
-              </div>
-            </div>
-            <!--加载更多按钮-->
-            <van-button v-if="articles.length" plain type="danger" style="margin-bottom: 5vw" round class="load-more"
-                        @click="loadMore">加载更多
-            </van-button>
-            <!--无内容时显示-->
-            <div v-if="!articles.length">
-              无更多内容
+        </div>
+      </van-swipe-item>
+    </van-swipe>
+    <!--文章-->
+    <van-tabs class="tabs" v-model:active="activeIndex" animated swipeable border offset-top="12vw"
+              title-active-color="#8b0000">
+      <van-tab v-for="category in staticVariables.categories" :title="category">
+        <div class="articles">
+          <div class="article-container" v-for="article in articles" @click="goToArticle(article['link'])">
+            <!--&lt;!&ndash;van-image默认的display是inline-block！！！巨坑，卡了好久，底下老是有缝隙。改成block就好了&ndash;&gt;-->
+            <van-image class="article-cover" :src="article['cover']" fit="cover"></van-image>
+            <div class="article-title">
+              {{ article.title }}
             </div>
           </div>
-        </van-tab>
-      </van-tabs>
+          <!--加载更多按钮-->
+          <van-button v-if="articles.length" plain type="danger" style="margin-bottom: 5vw" round :loading="loading"
+                      loading-text="加载中..."
+                      class="load-more"
+                      @click="loadMore">加载更多
+          </van-button>
+          <!--无内容时显示-->
+          <div v-if="!articles.length">
+            无更多内容
+          </div>
+        </div>
+      </van-tab>
+    </van-tabs>
+  </div>
 
-    </div>
-  </van-pull-refresh>
+  <!--Vant 4有backtop但是Vant 3没有 QAQ。于是只能用element plus的。-->
+  <el-backtop style="color: rgba(196, 86, 86, 255); --el-backtop-hover-bg-color: rgba(253, 226, 226, 255);" bottom="80"
+              visibility-height="400"/>
+
 </template>
 
 <script setup>
@@ -48,7 +52,6 @@ import {computed, inject, watch} from "vue";
 import {classified} from "../classified";
 import {staticVariables} from "../staticVariables";
 import {useRouter} from "vue-router";
-import {Toast} from "vant";
 
 
 let headlines = $ref([])
@@ -65,6 +68,7 @@ getHeadlines()
 const activeIndex = $ref(0)
 let activeTab = $ref(computed(() => staticVariables.categories[activeIndex]))
 let articles = $ref([])
+let loading = $ref(false)
 
 watch($$(activeTab), () => {
   getArticles(activeTab)
@@ -80,32 +84,10 @@ function goToArticle(link) {
   window.location.href = link
 }
 
-let loading = $ref(false);
-
-function onRefresh() {
-  Toast.loading({
-    duration: 0,
-    message: '加载中...',
-    forbidClick: true,
-    loadingType: 'spinner'
-  })
-  headlines = []
-  articles = []
-  getArticles(activeTab)
-  getHeadlines()
-  Toast.clear()
-  loading = false
-}
-
 async function loadMore() {
-  Toast.loading({
-    duration: 0,
-    message: '加载中...',
-    forbidClick: true,
-    loadingType: 'spinner'
-  })
+  loading = true
   articles = articles.concat((await axios.get(`${classified.backendAddress}/articles/${articles.length}/${activeTab}`)).data)
-  Toast.clear()
+  loading = false
 }
 
 </script>
@@ -117,10 +99,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-  .van-pull-refresh {
-    overflow: visible;
-  }
-
   .container {
     display: flex;
     padding-top: 3vw;
@@ -174,19 +152,16 @@ export default {
     border-top-right-radius: 10px;
   }
 
-  :deep(.van-tabs__content) {
-    background-color: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
 
   .articles {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 3vw;
-    height: 92vw;
-    overflow: scroll;
+    margin-bottom: 15vw;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
   .article-container {

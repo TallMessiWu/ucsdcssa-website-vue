@@ -49,12 +49,15 @@
           </span>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item>新生微信群</el-dropdown-item>
-                    <el-dropdown-item>新生见面会</el-dropdown-item>
-                    <el-dropdown-item>"一城一程"UCSD新生手册</el-dropdown-item>
-                    <el-dropdown-item>接机服务</el-dropdown-item>
-                    <el-dropdown-item>接机报名微信小程序</el-dropdown-item>
-                    <el-dropdown-item>健康包发放</el-dropdown-item>
+                    <a href="/src/assets/一城一程——UCSD%20CSSA新生手册%204.0.pdf" target="_blank">
+                      <el-dropdown-item>"一城一程"UCSD新生手册</el-dropdown-item>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/wn6jQs_kf8qFkqiISoEZRA" target="_blank">
+                      <el-dropdown-item>新生资源</el-dropdown-item>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/nYxpPqBgKjTkYPmhf7qJMg" target="_blank">
+                      <el-dropdown-item>新生见面会</el-dropdown-item>
+                    </a>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
