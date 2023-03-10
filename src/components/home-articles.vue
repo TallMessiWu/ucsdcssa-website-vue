@@ -116,7 +116,7 @@ export default {
   }
 
   .article-tab-pane {
-    padding-left: 1vw;
+    padding-left: 2.5vw;
   }
 
   :deep(.el-tabs__active-bar) {
