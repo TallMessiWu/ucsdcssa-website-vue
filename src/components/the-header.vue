@@ -49,7 +49,8 @@
           </span>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <a href="/static/一城一程——UCSD%20CSSA新生手册%204.0.pdf" target="_blank">
+                    <!--pdf文件太大了，打包的时候不会被编译成代码。因此需要放在public文件夹里面。-->
+                    <a href="/一城一程——UCSD%20CSSA新生手册%204.0.pdf" target="_blank">
                       <el-dropdown-item>"一城一程"UCSD新生手册</el-dropdown-item>
                     </a>
                     <a href="https://mp.weixin.qq.com/s/wn6jQs_kf8qFkqiISoEZRA" target="_blank">
