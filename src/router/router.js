@@ -90,7 +90,7 @@ router.beforeEach((to, from, next) => {
     const id = localStorage.getItem("id")
 
     if (loginRequiredPages.includes(to.path) && !token && !id) {
-        next({path: "/login-register", query: {destination: to.path}})
+        next({path: "/mobile-login-register", query: {destination: to.path}})
     } else {
         next()
     }
