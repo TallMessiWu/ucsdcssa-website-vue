@@ -8,7 +8,7 @@
         <h2>近期公众号热门</h2>
       </el-row>
       <el-row justify="center">
-        <p>点击标题阅读原文，或点击这里扫码关注我们</p>
+        <p>点击标题阅读原文，或点击<a target="_blank" href="/src/assets/公众号海报.jpg">这里</a>扫码关注我们</p>
       </el-row>
     </el-header>
 
@@ -22,8 +22,9 @@
           <el-tab-pane v-for="category in categories" :label="category" lazy>
             <el-row class="article-tab-pane">
               <el-col :span="8" v-for="article in articles">
-                <article-tab :title="article['title']" :categories="article['categories']" :cover="article['cover']"
-                             :link="article['link']"/>
+                <home-article-tab :title="article['title']" :categories="article['categories']"
+                                  :cover="article['cover']"
+                                  :link="article['link']"/>
               </el-col>
             </el-row>
           </el-tab-pane>
@@ -36,7 +37,7 @@
 </template>
 
 <script setup>
-import ArticleTab from "../components/article-tab.vue";
+import HomeArticleTab from "./home-article-tab.vue";
 import {getAssetsFile} from "../utils/getAssetsFile";
 import {classified} from "../classified";
 import {inject} from "vue";
@@ -89,6 +90,14 @@ export default {
 
   :deep(.el-header) {
     height: 10vw;
+  }
+
+  a {
+    color: rgb(152, 47, 45);
+
+    &:hover {
+      color: #FF7E54;
+    }
   }
 
   .article-tab {

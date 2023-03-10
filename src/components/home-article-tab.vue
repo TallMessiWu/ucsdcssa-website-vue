@@ -35,7 +35,7 @@ function goToArticle() {
 
 <script>
 export default {
-  name: "ArticleTab"
+  name: "HomeArticleTab"
 }
 </script>
 

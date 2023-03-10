@@ -15,7 +15,7 @@ const routes = [
     {
         path: '/',
         component: Index,
-        redirect: "/home",
+        name: "Index",
         children: [
             {
                 path: "home",
@@ -38,7 +38,7 @@ const routes = [
     {
         path: '/mobile',
         component: MobileIndex,
-        redirect: "/mobile/home",
+        name: "MobileIndex",
         children: [
             {
                 path: "home",
@@ -75,6 +75,7 @@ const routes = [
 ]
 
 const router = createRouter({
+    mode: "history",
     history: createWebHashHistory(),
     routes,
 })

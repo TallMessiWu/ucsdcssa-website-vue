@@ -23,6 +23,13 @@
               </div>
             </el-col>
 
+            <!--访问移动端页面按钮-->
+            <el-col :span="4.5">
+              <div>
+                <el-button type="plain" class="el-dropdown-link" link @click="openMobilePage">访问移动端页面</el-button>
+              </div>
+            </el-col>
+
             <!--关于CSSA按钮-->
             <!--锚点做起来太麻烦，感觉没有必要，先去掉吧-->
             <!--<el-col :span="4.5">-->
@@ -145,14 +152,24 @@ function goToDepartment(departmentName) {
   })
 }
 
-function goAnchor(id) {
-  id = "#" + id;
-  console.log(document.querySelector(id))
-  document.querySelector(id).scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "nearest",
-  });
+function openMobilePage() {
+  // Fixes dual-screen position                            Most browsers       Firefox
+  const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left
+  const dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top
+
+  const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width
+  const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height
+
+  const w = 400
+  const h = 600
+
+  const left = ((width / 2) - (w / 2)) + dualScreenLeft
+  const top = ((height / 2) - (h / 2)) + dualScreenTop
+  const newWindow = window.open("../#/mobile/?force=mobile", "UCSD CSSA移动端网站", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbar=no, resizable=yes, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left)
+  if (window.focus) {
+    newWindow.focus()
+  }
+
 }
 </script>
 
