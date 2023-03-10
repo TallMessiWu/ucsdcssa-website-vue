@@ -49,7 +49,7 @@
           </span>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <a href="/src/assets/一城一程——UCSD%20CSSA新生手册%204.0.pdf" target="_blank">
+                    <a href="/static/一城一程——UCSD%20CSSA新生手册%204.0.pdf" target="_blank">
                       <el-dropdown-item>"一城一程"UCSD新生手册</el-dropdown-item>
                     </a>
                     <a href="https://mp.weixin.qq.com/s/wn6jQs_kf8qFkqiISoEZRA" target="_blank">
