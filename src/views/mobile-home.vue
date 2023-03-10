@@ -160,6 +160,7 @@ export default {
 
   .headline-title {
     margin-bottom: 2vw;
+    text-align: center;
   }
 
   .tabs {
