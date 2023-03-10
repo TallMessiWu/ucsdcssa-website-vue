@@ -58,7 +58,7 @@ const axios = inject('axios')
 let loading = $ref(false)
 
 async function getArticles(category) {
-  articles = (await axios.get(`${classified.backendAddress}/articles/${articles.length}/${category}`)).data
+  articles = (await axios.get(`${classified.backendAddress}/articles/0/${category}`)).data
 }
 
 getArticles(activeTab)

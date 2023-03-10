@@ -20,7 +20,7 @@
       <van-tab v-for="category in staticVariables.categories" :title="category">
         <div class="articles">
           <div class="article-container" v-for="article in articles" @click="goToArticle(article['link'])">
-            <!--&lt;!&ndash;van-image默认的display是inline-block！！！巨坑，卡了好久，底下老是有缝隙。改成block就好了&ndash;&gt;-->
+            <!--van-image默认的display是inline-block！！！巨坑，卡了好久，底下老是有缝隙。改成block就好了-->
             <van-image class="article-cover" :src="article['cover']" fit="cover"></van-image>
             <div class="article-title">
               {{ article.title }}
