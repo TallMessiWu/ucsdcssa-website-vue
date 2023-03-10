@@ -5,7 +5,7 @@
     <van-tabbar route active-color="#C22A1E" placeholder>
       <van-tabbar-item replace to="/mobile/home" icon="home-o">主页</van-tabbar-item>
       <van-tabbar-item replace to="/mobile/classes" icon="friends-o">课友群</van-tabbar-item>
-      <van-tabbar-item replace to="/mobile/card" icon="credit-pay">CSSA卡</van-tabbar-item>
+      <!--<van-tabbar-item replace to="/mobile/card" icon="credit-pay">CSSA卡</van-tabbar-item>-->
     </van-tabbar>
   </van-config-provider>
 
