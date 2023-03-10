@@ -8,7 +8,8 @@
         <h2>近期公众号热门</h2>
       </el-row>
       <el-row justify="center">
-        <p>点击标题阅读原文，或点击<a target="_blank" href="/src/assets/公众号海报.jpg">这里</a>扫码关注我们</p>
+        <!--这里要打开的图片需要放到public文件夹下。-->
+        <p>点击标题阅读原文，或点击<a target="_blank" href="/公众号海报.jpg">这里</a>扫码关注我们</p>
       </el-row>
     </el-header>
 

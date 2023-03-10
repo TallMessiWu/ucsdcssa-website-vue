@@ -15,7 +15,8 @@
 
             <!--Wechat image-->
             <el-col :span="2">
-              <a href="/src/assets/公众号海报.jpg" target="_blank">
+              <!--这里要打开的图片需要放到public文件夹下。-->
+              <a href="/公众号海报.jpg" target="_blank">
                 <el-image :src="getAssetsFile('wechat.png')" class="icon icon-container wechat"></el-image>
               </a>
             </el-col>
