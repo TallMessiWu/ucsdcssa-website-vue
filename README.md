@@ -33,7 +33,8 @@
 5. 手机相关页面与组件命名应由`mobile`开头，例如`mobile-home.vue`。
 6. 详情可参考[Vue.js命名风格指南（易记）](https://zhuanlan.zhihu.com/p/371613632)
    与[史上最全 Vue 前端代码风格指南](https://zhuanlan.zhihu.com/p/437632696)。
-7. CSS和HTML代码部分中，除个别属性如`border-radius`可以使用`px`外，其他尺寸单位都应使用`vw`作为单位。
+7. 在`HTML`、`CSS`和`Less`代码里，除个别属性如`border-radius`可以使用`px`外，其他尺寸单位都应尽可能使用`vw`作为单位。
+8. `.vue`文件中的`style`部分应尽量使用`Less`语法编写，以提高可读性。
 
 ## 项目运行要求
 
