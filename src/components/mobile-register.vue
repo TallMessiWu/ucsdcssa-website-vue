@@ -141,7 +141,7 @@ async function sendCaptcha() {
   formData.append("email", email.toLowerCase())
   formData.append("purpose", "注册")
   try {
-    await axios.put("/captcha", formData)
+    await axios.post("/captcha", formData)
   } catch (err) {
     console.log(err)
     captchaState.getCodeDisabled = false
