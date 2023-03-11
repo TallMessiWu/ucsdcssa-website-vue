@@ -1,7 +1,21 @@
 # UCSD CSSA官网
 
-[官网入口](https://www.ucsdcssa.com)  
+[官网入口](https://www.ucsdcssa.com/)
+
+[API入口](https://api.ucsdcssa.com/)
+
+[前端GitHub仓库](https://github.com/TallMessiWu/ucsdcssa-website-vue)
+
 [后端GitHub仓库](https://github.com/TallMessiWu/ucsdcssa-website-backend)
+
+## 目录
+
+- [项目配置](#项目配置)
+- [代码风格](#代码风格)
+- [项目运行要求](#项目运行要求)
+- [GitHub提交指南](#GitHub提交指南)
+- [网站更新指南](#网站更新指南)
+- [常见问题](#常见问题)
 
 ## 项目配置
 
@@ -19,6 +33,22 @@
 5. 手机相关页面与组件命名应由`mobile`开头，例如`mobile-home.vue`。
 6. 详情可参考[Vue.js命名风格指南（易记）](https://zhuanlan.zhihu.com/p/371613632)
    与[史上最全 Vue 前端代码风格指南](https://zhuanlan.zhihu.com/p/437632696)。
+
+## 项目运行要求
+
+在克隆项目后，需要在项目`src`目录下新建`classified.js`文件，内容如下：
+
+```js
+export const classified = {
+   backendAddress: "更换为后端地址，例如如果在本地跑，就写'http://127.0.0.1:{flask服务端口号}'。如果在服务器跑就写'https://api.ucsd.com'。"
+}
+```
+
+然后需要在项目根目录下运行`npm install`安装依赖。
+
+使用`npm run dev`启动项目。
+
+可以使用`npm run build`打包构建项目。打包后的文件在`dist`目录下。
 
 ## GitHub提交指南
 
