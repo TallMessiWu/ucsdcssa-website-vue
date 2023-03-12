@@ -201,10 +201,18 @@ export default {
     white-space: nowrap;
     vertical-align: baseline;
     line-height: 2.5vw;
+
+    &:hover {
+      color: rgba(196, 86, 86, 255);
+    }
   }
 
   :deep(.el-dropdown-menu__item:not(.is-disabled):focus) {
     background-color: rgba(253, 226, 226, 255);
+    color: rgba(196, 86, 86, 255);
+  }
+
+  .el-button:hover {
     color: rgba(196, 86, 86, 255);
   }
 
