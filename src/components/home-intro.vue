@@ -28,7 +28,7 @@
 
     <el-container>
       <el-main>
-        
+
         <!--大标题-->
         <el-row>
           <el-col :offset="1" :span="23">
@@ -50,7 +50,8 @@
         <el-row>
           <!--图片右边第一个箭头-->
           <el-col :span="5" class="col1">
-            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"/>
+            <el-button id="arrow1" color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"
+                       @click="clearButtonState('arrow1')"/>
           </el-col>
           <!--图片右边第一个小标题-->
           <el-col :span="12">
@@ -62,7 +63,8 @@
         <el-row>
           <!--图片右边第二个箭头-->
           <el-col :span="5">
-            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"/>
+            <el-button id="arrow2" color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"
+                       @click="clearButtonState('arrow2')"/>
           </el-col>
           <!--图片右边第二个小标题-->
           <el-col :span="12">
@@ -75,7 +77,8 @@
         <el-row justify="start">
           <!--图片右边第三个箭头-->
           <el-col :span="5">
-            <el-button color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"/>
+            <el-button id="arrow3" color="#B02B3B" :icon="ArrowRightBold" circle plain class="arrow"
+                       @click="clearButtonState('arrow3')"/>
           </el-col>
           <!--图片右边第三个小标题-->
           <el-col :span="12">
@@ -95,6 +98,13 @@ import {ArrowRightBold, CaretRight} from '@element-plus/icons-vue'
 import {getAssetsFile} from "../utils/getAssetsFile";
 
 let dialogVisible = $ref(false);
+
+// 清除按钮点击后的状态，使其恢复到未点击状态。
+// https://blog.csdn.net/qq_43586088/article/details/126367134
+function clearButtonState(id) {
+  document.getElementById(id).blur();
+}
+
 </script>
 
 <script>

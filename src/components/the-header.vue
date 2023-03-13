@@ -18,7 +18,8 @@
             <!--<el-col :span="2.5">-->
             <el-col :span="2.5">
               <div>
-                <el-button type="plain" class="el-dropdown-link" link @click="router.replace({name: 'Home'})">主页
+                <el-button plain class="el-dropdown-link" id="home-page-button" link
+                           @click="router.replace({name: 'Home'}); clearButtonState('home-page-button');">主页
                 </el-button>
               </div>
             </el-col>
@@ -26,7 +27,9 @@
             <!--访问移动端页面按钮-->
             <el-col :span="4.5">
               <div>
-                <el-button type="plain" class="el-dropdown-link" link @click="openMobilePage">访问移动端页面</el-button>
+                <el-button plain id="mobile-page-button" class="el-dropdown-link" link @click="openMobilePage">
+                  访问移动端页面
+                </el-button>
               </div>
             </el-col>
 
@@ -146,6 +149,13 @@ import {useRouter} from "vue-router"
 
 const router = useRouter();
 
+
+// 清除按钮点击后的状态，使其恢复到未点击状态。
+// https://blog.csdn.net/qq_43586088/article/details/126367134
+function clearButtonState(id) {
+  document.getElementById(id).blur();
+}
+
 function goToDepartment(departmentName) {
   router.push({
     name: 'Department',
@@ -155,6 +165,7 @@ function goToDepartment(departmentName) {
     }
   })
 }
+
 
 function openMobilePage() {
   // Fixes dual-screen position                            Most browsers       Firefox
@@ -173,7 +184,8 @@ function openMobilePage() {
   if (window.focus) {
     newWindow.focus()
   }
-
+  // 清除按钮点击状态
+  clearButtonState("mobile-page-button")
 }
 </script>
 
