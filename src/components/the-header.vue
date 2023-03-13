@@ -5,18 +5,18 @@
       <el-row justify="space-between" align="middle">
 
         <!--CSSA LOGO-->
-        <el-col :span="12" :offset="2">
+        <el-col :span="16" :offset="2">
           <el-row align="middle">
             <el-image class="logo" :src="getAssetsFile('logo-with-text.png')" fit="contain"></el-image>
           </el-row>
         </el-col>
 
-        <el-col :span="10">
+        <el-col :span="6">
           <el-row justify="space-between" align="middle">
 
             <!--主页按钮-->
             <!--<el-col :span="2.5">-->
-            <el-col :offset="10" :span="2.5">
+            <el-col :span="2.5">
               <div>
                 <el-button type="plain" class="el-dropdown-link" link @click="router.replace({name: 'Home'})">主页
                 </el-button>
