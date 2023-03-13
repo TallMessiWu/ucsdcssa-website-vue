@@ -46,6 +46,7 @@
    与[史上最全 Vue 前端代码风格指南](https://zhuanlan.zhihu.com/p/437632696)。
 7. 在`HTML`、`CSS`和`Less`代码里，除个别属性如`border-radius`可以使用`px`外，其他尺寸单位都应尽可能使用`vw`作为单位。
 8. `.vue`文件中的`style`部分应尽量使用`Less`语法编写，以提高可读性。
+9. 用不到的引用(import)语句应该删除。
 
 ## 项目运行要求
 
@@ -53,7 +54,7 @@
 
 ```js
 export const classified = {
-   backendAddress: "更换为后端地址，例如如果在本地跑，就写'http://127.0.0.1:{flask服务端口号}'。如果在服务器跑就写'https://api.ucsd.com'。"
+    backendAddress: "更换为后端地址，例如如果在本地跑，就写'http://127.0.0.1:{flask服务端口号}'。如果在服务器跑就写'https://api.ucsd.com'。"
 }
 ```
 

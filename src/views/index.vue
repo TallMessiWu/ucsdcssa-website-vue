@@ -23,8 +23,7 @@
 
 <script setup>
 import TheHeader from "../components/the-header.vue";
-import TheFooter from "../components/the-footer.vue";
-</script>
+import TheFooter from "../components/the-footer.vue";</script>
 
 <script>
 export default {
@@ -37,9 +36,21 @@ export default {
     padding: 0;
   }
 
+  .el-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
   :deep(.el-main) {
     padding: 0;
     overflow: visible;
+  }
+
+  .el-main {
+    // el-header默认高度是60px，这里main要加上这个高度，否则会被header遮挡部分内容。
+    margin-top: 3.153vw;
   }
 
   :deep(.el-footer) {
