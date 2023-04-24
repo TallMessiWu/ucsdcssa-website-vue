@@ -24,5 +24,17 @@
     "unplugin-icons": "^0.15.1",
     "unplugin-vue-components": "^0.22.12",
     "vite": "^3.1.0"
-  }
+  },
+  "description": "[官网入口](https://www.ucsdcssa.com/)",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnChen034/ucsdcssa-website-vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnChen034/ucsdcssa-website-vue/issues"
+  },
+  "homepage": "https://github.com/JohnChen034/ucsdcssa-website-vue#readme"
 }
