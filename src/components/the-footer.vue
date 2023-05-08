@@ -212,7 +212,7 @@ export default {
   }
 
   .copy{
-    margin-left: 250px;
+    margin-left: 15vw;
     //margin-top: 25px;
   }
 
