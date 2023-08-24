@@ -1,56 +1,6 @@
 <template>
   <el-container class="common-layout">
     <el-footer>
-<!--      <el-row justify="center" class="first_container">-->
-
-<!--        <el-col :span="6">-->
-<!--          <el-row justify="space-evenly" class="icons">-->
-
-<!--            &lt;!&ndash;Facebook image and link&ndash;&gt;-->
-<!--            <el-col :span="2">-->
-<!--              <a href="https://www.facebook.com/ucsdcssa/">-->
-<!--                <el-image :src="getAssetsFile('facebook-fill.png')" class="icon icon-container facebook"></el-image>-->
-<!--              </a>-->
-<!--            </el-col>-->
-
-<!--            &lt;!&ndash;Wechat image&ndash;&gt;-->
-<!--            <el-col :span="2">-->
-<!--              &lt;!&ndash;这里要打开的图片需要放到public文件夹下。&ndash;&gt;-->
-<!--              <a href="/公众号海报.jpg" target="_blank">-->
-<!--                <el-image :src="getAssetsFile('wechat.png')" class="icon icon-container wechat"></el-image>-->
-      <!--              </a>-->
-<!--            </el-col>-->
-
-<!--            &lt;!&ndash;Instagram image and link&ndash;&gt;-->
-<!--            <el-col :span="2">-->
-<!--              <a href="https://www.instagram.com/ucsdcssa1985/">-->
-<!--                <el-image :src="getAssetsFile('instagram.png')" class="icon icon-container instagram"></el-image>-->
-<!--              </a>-->
-<!--            </el-col>-->
-<!--          </el-row>-->
-<!--        </el-col>-->
-<!--      </el-row>-->
-
-<!--      &lt;!&ndash;CSSA LOGO&ndash;&gt;-->
-<!--      <el-row>-->
-<!--        <el-col :span="3">-->
-<!--          <el-image :src="getAssetsFile('logo.png')" class="logo"></el-image>-->
-<!--        </el-col>-->
-<!--        &lt;!&ndash;Copyright&ndash;&gt;-->
-<!--        <el-col :span="21" class="btm_text">-->
-<!--          <el-row class="texta">-->
-<!--            Copyright © 2023-->
-<!--            <span class="boldtext">&nbspUCSD CSSA&nbsp</span>-->
-<!--            All rights reserved.-->
-<!--          </el-row>-->
-<!--          <el-row>-->
-<!--            &lt;!&ndash;网站备案信息&ndash;&gt;-->
-<!--            <el-link href="https://beian.miit.gov.cn/#/Integrated/index" :underline="false">苏ICP备2022038753号-1-->
-<!--            </el-link>-->
-<!--          </el-row>-->
-<!--        </el-col>-->
-<!--      </el-row>-->
-
       <el-row>
         <el-col :span="12"><div class="iconsss" />
           <el-row justify="center" class="follow">Follow US</el-row>
@@ -61,7 +11,7 @@
               </a>
             </el-col>
 
-            <!--Wechat image-->
+            <!--Wechat image and link-->
             <el-col :span="2" class="icon1">
               <!--这里要打开的图片需要放到public文件夹下。-->
               <a href="/公众号海报.jpg" target="_blank">
@@ -75,15 +25,15 @@
                 <el-image :src="getAssetsFile('instagram.png')" class="icon icon-container instagram"></el-image>
               </a>
             </el-col>
-              <!--     email       -->
 
+              <!-- weibo image and link -->
             <el-col :span="2" class="icon1">
               <el-popover placement="right"
                   :width="300"
                   popper-style="box-shadow: rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 20px -15px; padding: 20px;"
               >
                 <template #reference>
-                  <el-image :src="getAssetsFile('gmail.jpg')" class="icon icon-container gmail"/>
+                  <el-image :src="getAssetsFile('weibo.png')" class="icon icon-container gmail"/>
                 </template>
                 <template #default>
                   <div
@@ -92,17 +42,20 @@
                   >
 
                     <p class="cssaemail" style="margin: 0">
-                      cssa@gmail.com
+
+                      https://weibo.com/u/5674329114
                     </p>
                   </div>
                 </template>
               </el-popover>
             </el-col>
           </el-row>
-<!--    new row of contact    -->
+
+          <!-- new row of contact -->
+          <!--Youtube image and link-->
           <el-row justify="center">
             <el-col :span="2" class="icon2">
-              <a href="https://www.facebook.com/ucsdcssa/">
+              <a href="https://www.youtube.com/@ucsdcssa9192">
                 <el-image :src="getAssetsFile('youtube.jpg')" class="icon icon-container youtube"></el-image>
               </a>
             </el-col>
@@ -113,15 +66,15 @@
                 <el-image :src="getAssetsFile('red.jpg')" class="icon icon-container red" :fit="'contain'"></el-image>
             </el-col>
 
-            <!--Instagram image and link-->
+            <!--Bilibili image and link-->
             <el-col :span="2" class="icon2">
-              <a href="https://www.instagram.com/ucsdcssa1985/">
+              <a href="https://space.bilibili.com/34231252?spm_id_from=333.337.search-card.all.click">
                 <el-image :src="getAssetsFile('bilibili.jpg')" class="icon icon-container bilibili" :fit="'contain'"></el-image>
               </a>
             </el-col>
-            <!--     email       -->
+            <!--Tiktok image and link -->
             <el-col :span="2" class="icon2">
-              <a href="https://www.instagram.com/ucsdcssa1985/">
+              <a href="https://v.douyin.com/iJtfCFap/">
                 <el-image :src="getAssetsFile('tiktok.jpg')" class="icon icon-container tiktok" :fit="'contain'"></el-image>
               </a>
             </el-col>
@@ -130,10 +83,7 @@
 
 
 
-
-<!--          <el-row justify="center">jjjjj</el-row>-->
-
-<!--          CSSA LOGO-->
+          <!--CSSA LOGO-->
           <el-row justify="center" class="copy">
             <el-col :span="3">
               <el-image :src="getAssetsFile('logo.png')" class="logo"></el-image>
@@ -147,7 +97,8 @@
               </el-row>
               <el-row>
                 <!--网站备案信息-->
-                <el-link href="https://beian.miit.gov.cn/#/Integrated/index" :underline="false">苏ICP备2022038753号-1
+                <el-link href="https://beian.miit.gov.cn/#/Integrated/index" :underline="false">
+                  苏ICP备2022038753号-1
                 </el-link>
               </el-row>
             </el-col>
@@ -159,16 +110,25 @@
         <el-col :span="12"><div class="iconsss" />
 
           <el-row justify="center" class="follow">Contact US</el-row>
+          <el-row justify="center" style="color: white">cssa@gmail.com</el-row>
           <el-row justify="center">
-            <form action="https://formsubmit.co/cniu@ucsd.edu" method="POST">
-              <input type="text" name="name" required>
-              <input type="email" name="email" required>
-              <button type="submit">Send</button>
+            <form target="_blank" action="https://formsubmit.co/jic034@ucsd.edu" method="POST">
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col">
+                    <input type="text" name="name" class="form-control" placeholder="Your Full Name" required>
+                  </div>
+                  <div class="col">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email Address" required>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
             </form>
           </el-row>
-          <el-row justify="center">yo</el-row>
-          <el-row justify="center">jjjjj</el-row>
-          <el-row justify="center">lol</el-row>
         </el-col>
       </el-row>
 
@@ -207,13 +167,10 @@ export default {
     color: lightgrey;
     font-weight: bold;
     font-size: x-large;
-    //margin-top: 20px;
-    //margin-bottom: 10px;
   }
 
   .copy{
     margin-left: 15vw;
-    //margin-top: 25px;
   }
 
   .icon {
@@ -273,23 +230,12 @@ export default {
     margin-left: 0.5vw;
     margin-top: -1.2vw;
   }
-  //
-  //.icon-container:hover {
-  //  margin-top: 0.5vw;
-  //  margin-left: -0.5vw;
-  //  transform: scale(1.1);
-  //}
-  //
+
   .logo {
     width: 4vw;
-    //margin-left: 4vw;
-    //margin-top: -4vw;
+
   }
-  //
-  //.btm_text {
-  //  padding-top: 3vw;
-  //}
-  //
+
   .texta {
     color: lightgrey;
   }
@@ -298,21 +244,5 @@ export default {
     width: 10vw;
 
   }
-  //
-  //.boldtext {
-  //  font-weight: bold;
-  //}
-  //
-  //.el-link {
-  //  margin-right: 1vw;
-  //  color: #982F2D;
-  //}
-  //
-  //.el-link .el-icon--right.el-icon {
-  //  vertical-align: text-bottom;
-  //}
-  //
-  //.el-link:hover {
-  //  color: #FF7E54;
-  //}
+
 </style>
